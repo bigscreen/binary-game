@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_background_menu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/menu_horizontal_padding"
+        android:paddingRight="@dimen/menu_horizontal_padding"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <com.neopixl.pixlui.components.button.Button
+                android:id="@+id/btn_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:textColor="@color/white"
+                android:text="@string/start_cap"
+                android:textSize="32sp"
+                android:background="@drawable/bg_btn_primary_rounded"
+                pixlui:typeface="Cave-Story.ttf"/>
+
+            <com.neopixl.pixlui.components.button.Button
+                android:id="@+id/btn_high_scores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:textColor="@color/white"
+                android:text="@string/high_scores_cap"
+                android:textSize="32sp"
+                android:background="@drawable/bg_btn_primary_rounded"
+                android:layout_marginTop="15dp"
+                pixlui:typeface="Cave-Story.ttf"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <com.neopixl.pixlui.components.button.Button
+                android:id="@+id/btn_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:textColor="@color/white"
+                android:text="@string/settings_cap"
+                android:textSize="32sp"
+                android:background="@drawable/bg_btn_primary_rounded"
+                pixlui:typeface="Cave-Story.ttf"/>
+
+            <com.neopixl.pixlui.components.button.Button
+                android:id="@+id/btn_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:textColor="@color/white"
+                android:text="@string/about_cap"
+                android:textSize="32sp"
+                android:background="@drawable/bg_btn_primary_rounded"
+                android:layout_marginTop="15dp"
+                pixlui:typeface="Cave-Story.ttf"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

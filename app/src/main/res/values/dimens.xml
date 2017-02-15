@@ -1,0 +1,20 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="game_canvas_horizontal_margin">5dp</dimen>
+    <dimen name="global_padding">10dp</dimen>
+    <dimen name="line_padding">2.5dp</dimen>
+    <dimen name="line_padding_twice">5dp</dimen>
+    <dimen name="line_result_horizontal_margin">7dp</dimen>
+    <dimen name="game_panel_padding">5dp</dimen>
+    <dimen name="basic_margin">10dp</dimen>
+    <dimen name="decimal_hint_height">25dp</dimen>
+    <dimen name="game_btn_size">50dp</dimen>
+    <dimen name="oval_btn_padding">10dp</dimen>
+    <dimen name="menu_horizontal_padding">50dp</dimen>
+    <dimen name="btn_menu_vertical_padding">10dp</dimen>
+    <dimen name="setting_body_vertical_margin">25dp</dimen>
+    <dimen name="dialog_pause_width">350dp</dimen>
+    <dimen name="dialog_pause_height">200dp</dimen>
+    <dimen name="dialog_confirm_width">400dp</dimen>
+</resources>

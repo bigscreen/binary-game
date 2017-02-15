@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/basic_margin"
+    android:background="@drawable/bg_background_other">
+
+    <com.neopixl.pixlui.components.textview.TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="35sp"
+        android:textColor="@color/accent"
+        android:text="@string/settings_cap"
+        pixlui:typeface="Cave-Story.ttf"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="@dimen/setting_body_vertical_margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_music_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/basic_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_music_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_checkbox"
+                android:button="@null"/>
+
+            <com.neopixl.pixlui.components.textview.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="30sp"
+                android:textColor="@color/accent"
+                android:text="@string/music_bg"
+                pixlui:typeface="Cave-Story.ttf"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_sound_fx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/basic_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_sound_fx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_checkbox"
+                android:button="@null"/>
+
+            <com.neopixl.pixlui.components.textview.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="30sp"
+                android:textColor="@color/accent"
+                android:text="@string/sound_fx"
+                pixlui:typeface="Cave-Story.ttf"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

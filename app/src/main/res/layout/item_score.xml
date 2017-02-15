@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+    android:id="@+id/ll_score_item"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
+
+    <com.neopixl.pixlui.components.textview.TextView
+        android:id="@+id/tv_item_rank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/line_padding"
+        android:textSize="16sp"
+        android:textColor="@color/primary_dark"
+        android:text="01"
+        pixlui:typeface="Pixelmix.ttf"/>
+
+    <com.neopixl.pixlui.components.textview.TextView
+        android:id="@+id/tv_item_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_margin="@dimen/line_padding"
+        android:textSize="16sp"
+        android:textColor="@color/primary_dark"
+        android:text="999999"
+        pixlui:typeface="Pixelmix.ttf"/>
+
+    <com.neopixl.pixlui.components.textview.TextView
+        android:id="@+id/tv_item_level"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/line_padding"
+        android:textSize="16sp"
+        android:textColor="@color/primary_dark"
+        android:text="10"
+        pixlui:typeface="Pixelmix.ttf"/>
+
+    <com.neopixl.pixlui.components.textview.TextView
+        android:id="@+id/tv_item_lines"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/line_padding"
+        android:textSize="16sp"
+        android:textColor="@color/primary_dark"
+        android:text="28"
+        pixlui:typeface="Pixelmix.ttf"/>
+
+    <com.neopixl.pixlui.components.textview.TextView
+        android:id="@+id/tv_item_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:layout_margin="@dimen/line_padding"
+        android:textSize="16sp"
+        android:textColor="@color/primary_dark"
+        android:text="17/03/2015, 08:00"
+        pixlui:typeface="Pixelmix.ttf"/>
+
+</LinearLayout>
