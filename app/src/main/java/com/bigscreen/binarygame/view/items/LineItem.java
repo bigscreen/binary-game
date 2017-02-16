@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bigscreen.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.models.Line;
 import com.bigscreen.binarygame.R;
 
 
@@ -18,7 +18,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
 
     LinearLayout layoutLineItem;
     TextView textLineResult;
-    LineEntity lineEntity;
+    Line line;
     Button[] buttonLines = new Button[8];
     int[] lines;
 
@@ -51,11 +51,11 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
         }
     }
 
-    public void bind(LineEntity entity, int lineHeight, int position) {
+    public void bind(Line entity, int lineHeight, int position) {
         LayoutParams params = (LayoutParams) layoutLineItem.getLayoutParams();
         params.height = lineHeight;
 
-        this.lineEntity = entity;
+        this.line = entity;
         this.position = position;
         this.lines = entity.getLines();
 
@@ -64,7 +64,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
         }
 
         switch (entity.getType()) {
-            case LineEntity.GAME_MODE_ONE : {
+            case Line.GAME_MODE_ONE : {
                 for (Button btnLine : buttonLines) {
                     btnLine.setEnabled(true);
                     textLineResult.setEnabled(false);
@@ -72,7 +72,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
                 }
                 break;
             }
-            case LineEntity.GAME_MODE_TWO : {
+            case Line.GAME_MODE_TWO : {
                 for (Button btnLine : buttonLines) {
                     btnLine.setEnabled(false);
                     textLineResult.setEnabled(true);
@@ -107,11 +107,11 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
             int index = 0;
             for(Button btnLine : buttonLines) {
                 if (id == btnLine.getId()) {
-                    if (lineEntity.getLines()[index] == 0) {
-                        lineEntity.getLines()[index] = 1;
+                    if (line.getLines()[index] == 0) {
+                        line.getLines()[index] = 1;
                         setBtnBackground(btnLine, 1);
-                    } else if (lineEntity.getLines()[index] == 1) {
-                        lineEntity.getLines()[index] = 0;
+                    } else if (line.getLines()[index] == 1) {
+                        line.getLines()[index] = 0;
                         setBtnBackground(btnLine, 0);
                     }
                     itemPosition = index;
@@ -119,7 +119,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
                 index++;
             }
         }
-        listener.onLineItemClick(v, position, itemPosition, lineEntity);
+        listener.onLineItemClick(v, position, itemPosition, line);
     }
 
     @Override
@@ -144,6 +144,6 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
     }
 
     public interface OnLineItemClickListener {
-        public void onLineItemClick(View v, int parentPosition, int itemPosition, LineEntity lineEntity);
+        public void onLineItemClick(View v, int parentPosition, int itemPosition, Line line);
     }
 }

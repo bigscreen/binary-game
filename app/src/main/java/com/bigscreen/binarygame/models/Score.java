@@ -1,11 +1,11 @@
-package com.bigscreen.binarygame.entities;
+package com.bigscreen.binarygame.models;
 
 import android.text.format.DateFormat;
 
 import java.util.Date;
 
 
-public class ScoreEntity {
+public class Score {
 
     private static final String DEFAULT_FORMAT = "dd/MM/yy, HH:mm";
 
@@ -15,7 +15,7 @@ public class ScoreEntity {
     private int lines;
     private long time;
 
-    public ScoreEntity() {
+    public Score() {
         id = 0;
         score = 0;
         level = 0;

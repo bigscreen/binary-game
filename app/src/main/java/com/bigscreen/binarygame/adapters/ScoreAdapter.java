@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.bigscreen.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.models.Score;
 import com.bigscreen.binarygame.view.items.ScoreItem;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class ScoreAdapter extends BaseAdapter {
 
     private static final String TAG = ScoreAdapter.class.getSimpleName();
 
-    private List<ScoreEntity> entities;
+    private List<Score> entities;
     private Context context;
 
     public ScoreAdapter(Context context) {
@@ -24,7 +24,7 @@ public class ScoreAdapter extends BaseAdapter {
         entities = new ArrayList<>();
     }
 
-    public void setData(List<ScoreEntity> scoreEntities) {
+    public void setData(List<Score> scoreEntities) {
         if (entities == null) {
             entities = scoreEntities;
         } else {
@@ -34,12 +34,12 @@ public class ScoreAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void appendData(List<ScoreEntity> scoreEntities) {
+    public void appendData(List<Score> scoreEntities) {
         entities.addAll(scoreEntities);
         notifyDataSetChanged();
     }
 
-    public List<ScoreEntity> getList() {
+    public List<Score> getList() {
         return entities;
     }
 
@@ -52,7 +52,7 @@ public class ScoreAdapter extends BaseAdapter {
     }
 
     @Override
-    public ScoreEntity getItem(int position) {
+    public Score getItem(int position) {
         return entities.get(position);
     }
 

@@ -20,8 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bigscreen.binarygame.adapters.LineAdapter;
-import com.bigscreen.binarygame.entities.LineEntity;
-import com.bigscreen.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.models.Line;
+import com.bigscreen.binarygame.models.Score;
 import com.bigscreen.binarygame.extras.CustomCountDownTimer;
 import com.bigscreen.binarygame.fragments.Keyboard;
 import com.bigscreen.binarygame.helpers.AppHelper;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     private ImageView imageBtnPause;
     private TextView selectedTextView;
     private TextView textScore, textLevel, textLines;
-    private LineEntity selectedLineEntity;
+    private Line selectedLine;
     private CustomCountDownTimer lineCountDown;
     private PauseDialog pauseDialog;
     private BeautyDialog confirmDialogRestart;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         lineAdapter = new LineAdapter(this, layoutCanvas, lineHeight);
         pauseDialog = new PauseDialog(this, this);
 
-        lineAdapter.setData(new ArrayList<LineEntity>());
+        lineAdapter.setData(new ArrayList<Line>());
         highestScore = application.getDatabase().getHighestScore().getScore();
 
         imageBtnPause.setOnClickListener(this);
@@ -155,9 +155,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     private void populateData() {
-        List<LineEntity> lineEntities = new ArrayList<>();
+        List<Line> lineEntities = new ArrayList<>();
         for(int i=0; i<MAX_LINES; i++) {
-            LineEntity lineEntity = new LineEntity();
+            Line line = new Line();
             int[] lines = new int[LINE_LENGTH];
             List<Integer> randomIndex = getRandomLineIndex();
             for(int j=0; j<LINE_LENGTH; j++) {
@@ -169,15 +169,15 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
                 }
             }
             Log.i(TAG, "line[" + i + "]=" + Arrays.toString(lines));
-            lineEntity.setLines(lines);
+            line.setLines(lines);
             int randomType = AppHelper.getRandomNumber(1, 2);
-            lineEntity.setType(randomType);
-            if (randomType == LineEntity.GAME_MODE_ONE) {
-                lineEntity.setResult(getRandomDecimal());
-            } else if (randomType == LineEntity.GAME_MODE_TWO) {
-                lineEntity.setResult(0);
+            line.setType(randomType);
+            if (randomType == Line.GAME_MODE_ONE) {
+                line.setResult(getRandomDecimal());
+            } else if (randomType == Line.GAME_MODE_TWO) {
+                line.setResult(0);
             }
-            lineEntities.add(lineEntity);
+            lineEntities.add(line);
         }
         lineAdapter.setData(lineEntities);
         linesLength = lineEntities.size();
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Start the game.
      */
     private void startGame() {
-        addFirstData(LineEntity.GAME_MODE_ONE);
+        addFirstData(Line.GAME_MODE_ONE);
         timeLimit = timePerLevel[0];
         initCountDown(timeLimit);
     }
@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * @param gameMode game mode 1 or mode 2
      */
     private void addFirstData(int gameMode) {
-        LineEntity lineEntity = new LineEntity();
+        Line line = new Line();
         int[] lines = new int[LINE_LENGTH];
         List<Integer> randomIndex = getRandomLineIndex();
         for(int j=0; j<LINE_LENGTH; j++) {
@@ -302,25 +302,25 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             }
         }
         Log.i(TAG, "add line=" + Arrays.toString(lines));
-        lineEntity.setLines(lines);
-        lineEntity.setType(gameMode);
-        if (gameMode == LineEntity.GAME_MODE_ONE) {
-            lineEntity.setResult(getRandomDecimal());
-        } else if (gameMode == LineEntity.GAME_MODE_TWO) {
-            lineEntity.setResult(0);
+        line.setLines(lines);
+        line.setType(gameMode);
+        if (gameMode == Line.GAME_MODE_ONE) {
+            line.setResult(getRandomDecimal());
+        } else if (gameMode == Line.GAME_MODE_TWO) {
+            line.setResult(0);
         }
 
-        if (!isAnswerTrue(lineEntity)) {
-            lineAdapter.appendSingleData(lineEntity);
+        if (!isAnswerTrue(line)) {
+            lineAdapter.appendSingleData(line);
             layoutCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
             application.playEffect(R.raw.effect_line_added);
             linesLength++;
             flagGameState++;
         } else {
             if (flagGameState == 0) {
-                addFirstData(LineEntity.GAME_MODE_ONE);
+                addFirstData(Line.GAME_MODE_ONE);
             } else {
-                addFirstData(LineEntity.GAME_MODE_TWO);
+                addFirstData(Line.GAME_MODE_TWO);
             }
         }
     }
@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Add line data to list adapter.
      */
     private void addData() {
-        LineEntity lineEntity = new LineEntity();
+        Line line = new Line();
         int[] lines = new int[LINE_LENGTH];
         List<Integer> randomIndex = getRandomLineIndex();
         for(int j=0; j<LINE_LENGTH; j++) {
@@ -341,17 +341,17 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             }
         }
         Log.i(TAG, "add line=" + Arrays.toString(lines));
-        lineEntity.setLines(lines);
+        line.setLines(lines);
         int randomType = AppHelper.getRandomNumber(1, 2);
-        lineEntity.setType(randomType);
-        if (randomType == LineEntity.GAME_MODE_ONE) {
-            lineEntity.setResult(getRandomDecimal());
-        } else if (randomType == LineEntity.GAME_MODE_TWO) {
-            lineEntity.setResult(0);
+        line.setType(randomType);
+        if (randomType == Line.GAME_MODE_ONE) {
+            line.setResult(getRandomDecimal());
+        } else if (randomType == Line.GAME_MODE_TWO) {
+            line.setResult(0);
         }
 
-        if (!isAnswerTrue(lineEntity)) {
-            lineAdapter.appendSingleData(lineEntity);
+        if (!isAnswerTrue(line)) {
+            lineAdapter.appendSingleData(line);
             layoutCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
             application.playEffect(R.raw.effect_line_added);
             linesLength++;
@@ -399,19 +399,19 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     /**
      * Check line item count if it is already same with result line or not.
-     * @param lineEntity {@link com.bigscreen.binarygame.entities.LineEntity} which will be checked.
+     * @param line {@link com.bigscreen.binarygame.models.Line} which will be checked.
      * @return true if its count is same, dan false if not.
      */
-    private boolean isAnswerTrue(LineEntity lineEntity) {
+    private boolean isAnswerTrue(Line line) {
         int tempCount = 0;
         int itemIndex = 0;
-        for (int item : lineEntity.getLines()) {
+        for (int item : line.getLines()) {
             if (item == 1) {
                 tempCount = tempCount + decimal[itemIndex];
             }
             itemIndex++;
         }
-        return tempCount == lineEntity.getResult();
+        return tempCount == line.getResult();
     }
 
     /**
@@ -419,7 +419,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      */
     private void updateScore() {
         if (flagGameState < 2) {
-            addFirstData(LineEntity.GAME_MODE_TWO);
+            addFirstData(Line.GAME_MODE_TWO);
         } else if (flagGameState == 2) {
             addData();
             lineCountDown.start();
@@ -463,16 +463,16 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Save the score to database.
      */
     private void saveScore() {
-        if (score == 0)
+        if (this.score == 0)
             return;
 
-        ScoreEntity scoreEntity = new ScoreEntity();
-        scoreEntity.setScore(score);
-        scoreEntity.setLevel(levelState);
-        scoreEntity.setLines(lineState);
-        scoreEntity.setTime(System.currentTimeMillis() / 1000);
+        Score score = new Score();
+        score.setScore(this.score);
+        score.setLevel(levelState);
+        score.setLines(lineState);
+        score.setTime(System.currentTimeMillis() / 1000);
 
-        if (application.getDatabase().insertScore(scoreEntity))
+        if (application.getDatabase().insertScore(score))
             Log.i(TAG, "Game score saved!");
         else
             Log.e(TAG, "Game score could not saved!");
@@ -702,17 +702,17 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     };
 
     @Override
-    public void onLineItemClick(View v, int parentPosition, int itemPosition, LineEntity lineEntity) {
+    public void onLineItemClick(View v, int parentPosition, int itemPosition, Line line) {
         application.playEffect(R.raw.effect_button_clicked);
         selectedPosition = parentPosition;
-        selectedLineEntity = lineEntity;
+        selectedLine = line;
         if (itemPosition == LineItem.RESULT_CLICK) {
             selectedTextView = (TextView) v;
             showKeyboard();
         } else {
             if (frameKeyboard.getVisibility() == View.VISIBLE)
                 hideKeyboard();
-            lineAdapter.updateItem(parentPosition, lineEntity);
+            lineAdapter.updateItem(parentPosition, line);
             checkAnswer(parentPosition);
         }
     }
@@ -728,13 +728,13 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             }
             selectedTextView.setText(strDeleted);
             if (strDeleted.equals(""))
-                selectedLineEntity.setResult(0);
+                selectedLine.setResult(0);
             else
-                selectedLineEntity.setResult(Integer.parseInt(""+strDeleted));
-            lineAdapter.updateItem(selectedPosition, selectedLineEntity);
+                selectedLine.setResult(Integer.parseInt(""+strDeleted));
+            lineAdapter.updateItem(selectedPosition, selectedLine);
         } else if (key == Keyboard.KEY_OK) {
             hideKeyboard();
-            lineAdapter.updateItem(selectedPosition, selectedLineEntity);
+            lineAdapter.updateItem(selectedPosition, selectedLine);
             checkAnswer(selectedPosition);
         } else {
             if (key == 0 && strTemp.equals("")) {
@@ -742,8 +742,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             } else {
                 String strEdited = strTemp + String.valueOf(key);
                 selectedTextView.setText(strEdited);
-                selectedLineEntity.setResult(Integer.parseInt(strEdited));
-                lineAdapter.updateItem(selectedPosition, selectedLineEntity);
+                selectedLine.setResult(Integer.parseInt(strEdited));
+                lineAdapter.updateItem(selectedPosition, selectedLine);
             }
         }
     }

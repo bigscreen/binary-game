@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bigscreen.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.models.Line;
 import com.bigscreen.binarygame.view.items.LineItem;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class LineAdapter {
     private Context context;
     private LinearLayout lView;
     private int lineHeight;
-    private List<LineEntity> lineEntities;
+    private List<Line> lineEntities;
 
     public LineAdapter(Context context, LinearLayout lView, int lineHeight) {
         this.context = context;
@@ -29,23 +29,23 @@ public class LineAdapter {
         lineEntities = new ArrayList<>();
     }
 
-    public void setData(List<LineEntity> lineEntities) {
+    public void setData(List<Line> lineEntities) {
         this.lineEntities.clear();
         appendData(lineEntities);
     }
 
-    public void appendData(List<LineEntity> lineEntities) {
+    public void appendData(List<Line> lineEntities) {
         this.lineEntities.addAll(lineEntities);
         notifyDataSetChanged();
     }
 
-    public void appendSingleData(LineEntity lineEntity) {
-        this.lineEntities.add(lineEntity);
+    public void appendSingleData(Line line) {
+        this.lineEntities.add(line);
         notifyDataSetChanged();
     }
 
-    public void appendSingleData(int index, LineEntity lineEntity) {
-        this.lineEntities.add(index, lineEntity);
+    public void appendSingleData(int index, Line line) {
+        this.lineEntities.add(index, line);
         notifyDataSetChanged();
     }
 
@@ -59,15 +59,15 @@ public class LineAdapter {
         notifyDataSetChanged();
     }
 
-    public void updateItem(int index, LineEntity lineEntity) {
-        this.lineEntities.set(index, lineEntity);
+    public void updateItem(int index, Line line) {
+        this.lineEntities.set(index, line);
     }
 
     public int getCount() {
         return lineEntities.size();
     }
 
-    public LineEntity getItem(int position) {
+    public Line getItem(int position) {
         return lineEntities.get(position);
     }
 
@@ -75,7 +75,7 @@ public class LineAdapter {
         return id;
     }
 
-    public List<LineEntity> getList() {
+    public List<Line> getList() {
         return lineEntities;
     }
 

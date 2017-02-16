@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.bigscreen.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.models.Line;
 import com.bigscreen.binarygame.view.items.LineItem;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class LineAdapterList extends BaseAdapter {
 
     private static final String TAG = LineAdapterList.class.getSimpleName();
 
-    private List<LineEntity> entities;
+    private List<Line> entities;
     private int lineHeight;
     private Context context;
 
@@ -27,7 +27,7 @@ public class LineAdapterList extends BaseAdapter {
         entities = new ArrayList<>();
     }
 
-    public void processData(List<LineEntity> ts) {
+    public void processData(List<Line> ts) {
         if (entities == null) {
             entities = ts;
         } else {
@@ -37,12 +37,12 @@ public class LineAdapterList extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void setData(List<LineEntity> lineEntities) {
+    public void setData(List<Line> lineEntities) {
         entities.clear();
         appendData(lineEntities);
     }
 
-    public void appendData(List<LineEntity> lineEntities) {
+    public void appendData(List<Line> lineEntities) {
         entities.addAll(lineEntities);
         notifyDataSetChanged();
     }
@@ -65,17 +65,17 @@ public class LineAdapterList extends BaseAdapter {
         }
     }
 
-    public void appendSingleData(LineEntity lineEntity) {
-        this.entities.add(lineEntity);
+    public void appendSingleData(Line line) {
+        this.entities.add(line);
         notifyDataSetChanged();
     }
 
-    public void appendSingleData(LineEntity lineEntity, int index) {
-        this.entities.add(index, lineEntity);
+    public void appendSingleData(Line line, int index) {
+        this.entities.add(index, line);
         notifyDataSetChanged();
     }
 
-    public List<LineEntity> getList() {
+    public List<Line> getList() {
         return entities;
     }
 
@@ -88,7 +88,7 @@ public class LineAdapterList extends BaseAdapter {
     }
 
     @Override
-    public LineEntity getItem(int position) {
+    public Line getItem(int position) {
         return entities.get(position);
     }
 

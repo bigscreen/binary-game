@@ -1,9 +1,9 @@
-package com.bigscreen.binarygame.entities;
+package com.bigscreen.binarygame.models;
 
 import java.util.Arrays;
 
 
-public class LineEntity {
+public class Line {
 
     public static final int GAME_MODE_ONE = 1;
     public static final int GAME_MODE_TWO = 2;
@@ -12,7 +12,7 @@ public class LineEntity {
     private int[] lines;
     private int result;
 
-    public LineEntity() {
+    public Line() {
         lines = new int[8];
         result = 0;
     }
@@ -43,7 +43,7 @@ public class LineEntity {
 
     @Override
     public String toString() {
-        return "LineEntity{" +
+        return "Line{" +
                 "type=" + type +
                 ", lines=" + Arrays.toString(lines) +
                 ", result=" + result +

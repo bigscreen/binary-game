@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bigscreen.binarygame.R;
-import com.bigscreen.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.models.Score;
 
 
 public class ScoreItem extends LinearLayout {
@@ -29,7 +29,7 @@ public class ScoreItem extends LinearLayout {
         textTime = (TextView) findViewById(R.id.text_item_time);
     }
 
-    public void bind(ScoreEntity entity, int position) {
+    public void bind(Score entity, int position) {
 
         String rank;
         if ((position + 1) < 10) {

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.bigscreen.binarygame.adapters.ScoreAdapter;
-import com.bigscreen.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.models.Score;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ScoresActivity extends Activity {
     private ListView listScores;
     private Button buttonShareScore;
     private ScoreAdapter scoreAdapter;
-    private List<ScoreEntity> scoreEntities;
+    private List<Score> scoreEntities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
