@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,41 +12,41 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_7"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="7"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_8"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="8"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_9"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="9"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
     </LinearLayout>
 
@@ -56,41 +56,41 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="4"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="5"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="6"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
     </LinearLayout>
 
@@ -100,41 +100,41 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="1"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="2"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="3"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
     </LinearLayout>
 
@@ -144,41 +144,43 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_del"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_accent_flat"
             android:text="DEL"
-            android:textSize="10sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="10sp"
+            app:fontFamily="pressStart"
+            tools:ignore="SmallSp" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="0"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_ok"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="@dimen/line_padding"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_accent_flat"
             android:text="OK"
-            android:textSize="10sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="10sp"
+            app:fontFamily="pressStart"
+            tools:ignore="SmallSp" />
 
     </LinearLayout>
 

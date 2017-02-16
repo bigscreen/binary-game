@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_score_item"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_item_rank"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
-        android:textSize="16sp"
+        android:layout_weight="1"
         android:textColor="@color/primary_dark"
-        android:text="01"
-        pixlui:typeface="Pixelmix.ttf"/>
+        android:textSize="16sp"
+        app:fontFamily="pixelMix"
+        tools:text="01" />
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_item_score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
         android:layout_margin="@dimen/line_padding"
-        android:textSize="16sp"
+        android:layout_weight="2"
         android:textColor="@color/primary_dark"
-        android:text="999999"
-        pixlui:typeface="Pixelmix.ttf"/>
+        android:textSize="16sp"
+        app:fontFamily="pixelMix"
+        tools:text="999999" />
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_item_level"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
-        android:textSize="16sp"
+        android:layout_weight="1"
         android:textColor="@color/primary_dark"
-        android:text="10"
-        pixlui:typeface="Pixelmix.ttf"/>
+        android:textSize="16sp"
+        app:fontFamily="pixelMix"
+        tools:text="10" />
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_item_lines"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
-        android:textSize="16sp"
+        android:layout_weight="1"
         android:textColor="@color/primary_dark"
-        android:text="28"
-        pixlui:typeface="Pixelmix.ttf"/>
+        android:textSize="16sp"
+        app:fontFamily="pixelMix"
+        tools:text="28" />
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_item_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2.5"
         android:layout_margin="@dimen/line_padding"
-        android:textSize="16sp"
+        android:layout_weight="2.5"
         android:textColor="@color/primary_dark"
-        android:text="17/03/2015, 08:00"
-        pixlui:typeface="Pixelmix.ttf"/>
+        android:textSize="16sp"
+        app:fontFamily="pixelMix"
+        tools:text="17/03/2015, 08:00" />
 
 </LinearLayout>

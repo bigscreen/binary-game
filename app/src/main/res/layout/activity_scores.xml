@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/basic_margin"
-    android:background="@drawable/bg_background_other">
+    android:background="@drawable/bg_background_other"
+    android:orientation="vertical"
+    android:padding="@dimen/basic_margin">
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="35sp"
-        android:textColor="@color/accent"
         android:text="@string/high_scores_cap"
-        pixlui:typeface="Cave-Story.ttf"/>
+        android:textColor="@color/accent"
+        android:textSize="35sp"
+        app:fontFamily="caveStory" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/text_title"
         android:layout_above="@+id/button_share_score"
+        android:layout_below="@+id/text_title"
         android:layout_marginTop="@dimen/setting_body_vertical_margin"
         android:orientation="vertical">
 
@@ -32,58 +31,58 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/line_padding"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/line_padding"
-                android:textSize="24sp"
-                android:textColor="@color/primary_dark"
                 android:text="@string/rank"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/primary_dark"
+                android:textSize="24sp"
+                app:fontFamily="caveStory" />
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:layout_margin="@dimen/line_padding"
-                android:textSize="24sp"
-                android:textColor="@color/primary_dark"
+                android:layout_weight="2"
                 android:text="@string/score"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/primary_dark"
+                android:textSize="24sp"
+                app:fontFamily="caveStory" />
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:id="@+id/text_item_level"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="@dimen/line_padding"
-                android:textSize="24sp"
-                android:textColor="@color/primary_dark"
+                android:layout_weight="1"
                 android:text="@string/level"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/primary_dark"
+                android:textSize="24sp"
+                app:fontFamily="caveStory" />
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:id="@+id/text_item_lines"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="@dimen/line_padding"
-                android:textSize="24sp"
-                android:textColor="@color/primary_dark"
+                android:layout_weight="1"
                 android:text="@string/lines"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/primary_dark"
+                android:textSize="24sp"
+                app:fontFamily="caveStory" />
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:id="@+id/text_item_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.5"
                 android:layout_margin="@dimen/line_padding"
-                android:textSize="24sp"
-                android:textColor="@color/primary_dark"
+                android:layout_weight="2.5"
                 android:text="@string/played_at"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/primary_dark"
+                android:textSize="24sp"
+                app:fontFamily="caveStory" />
 
         </LinearLayout>
 
@@ -96,18 +95,18 @@
 
     </LinearLayout>
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_share_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/line_padding"
         android:layout_marginLeft="@dimen/line_padding"
         android:layout_marginRight="@dimen/line_padding"
+        android:layout_marginTop="@dimen/line_padding"
         android:background="@drawable/bg_btn_primary_flat"
-        android:textSize="26sp"
-        android:textColor="@color/white"
         android:text="@string/share_highest_score"
-        pixlui:typeface="Cave-Story.ttf"/>
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:fontFamily="caveStory" />
 
 </RelativeLayout>

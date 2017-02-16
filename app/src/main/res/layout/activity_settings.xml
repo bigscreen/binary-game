@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/basic_margin"
-    android:background="@drawable/bg_background_other">
+    android:background="@drawable/bg_background_other"
+    android:padding="@dimen/basic_margin">
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="35sp"
-        android:textColor="@color/accent"
         android:text="@string/settings_cap"
-        pixlui:typeface="Cave-Story.ttf"/>
+        android:textColor="@color/accent"
+        android:textSize="35sp"
+        app:fontFamily="caveStory" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,26 +28,26 @@
             android:id="@+id/layout_music_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/basic_margin"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="@dimen/basic_margin">
 
             <CheckBox
                 android:id="@+id/checkbox_music_bg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_checkbox"
-                android:button="@null"/>
+                android:button="@null" />
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:textColor="@color/accent"
                 android:text="@string/music_bg"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/accent"
+                android:textSize="30sp"
+                app:fontFamily="caveStory" />
 
         </LinearLayout>
 
@@ -57,26 +56,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="@dimen/basic_margin"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="@dimen/basic_margin">
 
             <CheckBox
                 android:id="@+id/checkbox_sound_fx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_checkbox"
-                android:button="@null"/>
+                android:button="@null" />
 
-            <com.neopixl.pixlui.components.textview.TextView
+            <com.bigscreen.binarygame.custom.GameTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
-                android:textSize="30sp"
-                android:textColor="@color/accent"
                 android:text="@string/sound_fx"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:textColor="@color/accent"
+                android:textSize="30sp"
+                app:fontFamily="caveStory" />
 
         </LinearLayout>
 

@@ -1,149 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_line_item"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_0"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_3"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_4"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_5"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_6"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.button.Button
+    <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_7"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="1"
+        android:background="@color/primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@color/primary"
-        pixlui:typeface="Pixelmix.ttf"/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
         android:layout_margin="@dimen/line_padding"
+        android:layout_weight="0.5"
         android:gravity="center"
+        android:text="="
         android:textColor="@color/accent"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="="/>
+        app:fontFamily="pixelMix" />
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_line_result"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:layout_marginTop="@dimen/line_result_horizontal_margin"
         android:layout_marginBottom="@dimen/line_result_horizontal_margin"
         android:layout_marginLeft="@dimen/line_padding"
         android:layout_marginRight="@dimen/line_padding"
+        android:layout_marginTop="@dimen/line_result_horizontal_margin"
+        android:layout_weight="1.5"
+        android:background="@drawable/bg_et_primary"
         android:gravity="center"
+        android:text="@string/zero"
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/zero"
-        android:background="@drawable/bg_et_primary"
-        pixlui:typeface="PressStart2P.ttf"/>
+        app:fontFamily="pressStart" />
 
 </LinearLayout>

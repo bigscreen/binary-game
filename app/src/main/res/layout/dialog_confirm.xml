@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/dialog_confirm_width"
     android:layout_height="match_parent"
-    android:minWidth="@dimen/dialog_confirm_width"
     android:background="@drawable/bg_dialog"
+    android:minWidth="@dimen/dialog_confirm_width"
+    android:orientation="vertical"
     android:padding="3dp">
 
     <LinearLayout
@@ -15,72 +14,72 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.neopixl.pixlui.components.textview.TextView
+        <com.bigscreen.binarygame.custom.GameTextView
             android:id="@+id/text_dlg_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/title"
             android:textColor="@color/accent"
             android:textSize="16sp"
-            android:text="@string/title"
-            pixlui:typeface="PressStart2P.ttf"/>
+            app:fontFamily="pressStart" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/accent"/>
+            android:background="@color/accent" />
 
     </LinearLayout>
 
-    <com.neopixl.pixlui.components.textview.TextView
+    <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_dlg_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_margin="5dp"
+        android:gravity="center_horizontal"
+        android:text="@string/message"
         android:textColor="@color/accent"
         android:textSize="14sp"
-        android:text="@string/message"
-        pixlui:typeface="PressStart2P.ttf"/>
+        app:fontFamily="pressStart" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="2dp"
+        android:background="@color/accent"
         android:orientation="horizontal"
-        android:background="@color/accent">
+        android:paddingTop="2dp">
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_dlg_negative"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
             android:text="@string/cancel"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
-        <com.neopixl.pixlui.components.button.Button
+        <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_dlg_positive"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:layout_marginLeft="1dp"
             android:layout_marginStart="1dp"
+            android:layout_weight="1"
             android:background="@drawable/bg_btn_primary_flat"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:text="@string/ok"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            pixlui:typeface="PressStart2P.ttf"/>
+            android:textSize="12sp"
+            app:fontFamily="pressStart" />
 
     </LinearLayout>
 

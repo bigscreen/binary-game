@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/dialog_pause_width"
     android:layout_height="@dimen/dialog_pause_height"
-    android:minWidth="@dimen/dialog_pause_width"
+    android:background="@drawable/bg_dialog"
     android:minHeight="@dimen/dialog_pause_height"
-    android:padding="3dp"
-    android:background="@drawable/bg_dialog">
+    android:minWidth="@dimen/dialog_pause_width"
+    android:padding="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.neopixl.pixlui.components.textview.TextView
+        <com.bigscreen.binarygame.custom.GameTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/game_paused"
             android:textColor="@color/accent"
             android:textSize="18sp"
-            android:text="@string/game_paused"
-            pixlui:typeface="PressStart2P.ttf"/>
+            app:fontFamily="pressStart" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/accent"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:background="@color/accent" />
 
     </LinearLayout>
 
@@ -45,9 +44,9 @@
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
+            android:background="@drawable/bg_btn_primary_pixelart"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_play_white"
-            android:background="@drawable/bg_btn_primary_pixelart"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -55,9 +54,9 @@
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
+            android:background="@drawable/bg_btn_primary_pixelart"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_replay_white"
-            android:background="@drawable/bg_btn_primary_pixelart"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -65,9 +64,9 @@
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
+            android:background="@drawable/bg_btn_primary_pixelart"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_setting_white"
-            android:background="@drawable/bg_btn_primary_pixelart"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -75,9 +74,9 @@
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
+            android:background="@drawable/bg_btn_primary_pixelart"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_close_white"
-            android:background="@drawable/bg_btn_primary_pixelart"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>

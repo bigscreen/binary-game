@@ -26,11 +26,11 @@ public class GameTextView extends TextView {
     private Typeface getSelectedTypeface(int fontStyle) {
         switch (fontStyle) {
             case GameTextViewAttr.caveStory:
-                return Typeface.createFromAsset(getContext().getAssets(), "fonts/Cave-Story.ttf");
+                return Typeface.createFromAsset(getContext().getAssets(), "fonts/cave_story.ttf");
             case GameTextViewAttr.pixelMix:
-                return Typeface.createFromAsset(getContext().getAssets(), "fonts/Pixelmix.ttf");
+                return Typeface.createFromAsset(getContext().getAssets(), "fonts/pixel_mix.ttf");
             case GameTextViewAttr.pressStart:
-                return Typeface.createFromAsset(getContext().getAssets(), "fonts/PressStart2P.ttf");
+                return Typeface.createFromAsset(getContext().getAssets(), "fonts/press_start_2p.ttf");
             default:
                 return Typeface.createFromAsset(getContext().getAssets(), "fonts/roboto_regular.ttf");
         }
