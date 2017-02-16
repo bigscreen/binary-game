@@ -1,4 +1,4 @@
-package com.intuisis.binarygame.extras;
+package com.bigscreen.binarygame.extras;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -6,13 +6,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 
  * A abstract timer utility class, that supports pause and resume.
- * 
  * Can be used either as a normal timer or a countdown timer.
- * 
- * @author Sridhar Sundar Raman
- * 
  */
 public abstract class Timer {
 	public static final int DURATION_INFINITY = -1;

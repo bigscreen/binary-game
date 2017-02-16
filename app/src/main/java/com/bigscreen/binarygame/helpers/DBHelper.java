@@ -1,4 +1,4 @@
-package com.intuisis.binarygame.helpers;
+package com.bigscreen.binarygame.helpers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,14 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.intuisis.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.entities.ScoreEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gallant on 16/03/15.
- */
+
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = DBHelper.class.getSimpleName();

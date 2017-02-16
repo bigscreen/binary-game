@@ -1,19 +1,17 @@
-package com.intuisis.binarygame.adapters;
+package com.bigscreen.binarygame.adapters;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.intuisis.binarygame.entities.ScoreEntity;
-import com.intuisis.binarygame.view.items.ScoreItem;
+import com.bigscreen.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.view.items.ScoreItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gallant on 16/03/15.
- */
+
 public class ScoreAdapter extends BaseAdapter {
 
     private static final String TAG = ScoreAdapter.class.getSimpleName();

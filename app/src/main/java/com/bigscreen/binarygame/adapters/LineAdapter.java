@@ -1,21 +1,18 @@
-package com.intuisis.binarygame.adapters;
+package com.bigscreen.binarygame.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.intuisis.binarygame.entities.LineEntity;
-import com.intuisis.binarygame.view.items.LineItem;
+import com.bigscreen.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.view.items.LineItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gallant on 05/03/15.
- */
+
 public class LineAdapter {
 
     private static final String TAG = LineAdapter.class.getSimpleName();

@@ -1,4 +1,4 @@
-package com.intuisis.binarygame.helpers;
+package com.bigscreen.binarygame.helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;

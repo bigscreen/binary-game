@@ -1,4 +1,4 @@
-package com.intuisis.binarygame.view.dialogs;
+package com.bigscreen.binarygame.view.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,11 +9,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.intuisis.binarygame.R;
+import com.bigscreen.binarygame.R;
 
-/**
- * Created by gallant on 17/03/15.
- */
+
 public class BeautyDialog extends Dialog implements View.OnClickListener {
 
     public static final int BUTTON_POSITIVE = 1;

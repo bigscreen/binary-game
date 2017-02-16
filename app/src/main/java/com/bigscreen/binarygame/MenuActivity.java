@@ -1,4 +1,4 @@
-package com.intuisis.binarygame;
+package com.bigscreen.binarygame;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,11 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.intuisis.binarygame.view.dialogs.BeautyDialog;
+import com.bigscreen.binarygame.view.dialogs.BeautyDialog;
 
-/**
- * Created by gallant on 15/03/15.
- */
+
 public class MenuActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = MenuActivity.class.getSimpleName();

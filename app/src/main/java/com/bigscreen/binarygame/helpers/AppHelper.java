@@ -1,12 +1,10 @@
-package com.intuisis.binarygame.helpers;
+package com.bigscreen.binarygame.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by gallant on 19/03/15.
- */
+
 public class AppHelper {
 
     public static int getRandomNumber(int min, int max) {

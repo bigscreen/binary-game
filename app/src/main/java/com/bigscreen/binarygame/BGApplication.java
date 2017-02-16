@@ -1,4 +1,4 @@
-package com.intuisis.binarygame;
+package com.bigscreen.binarygame;
 
 import android.app.Activity;
 import android.app.Application;
@@ -8,8 +8,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.Display;
 
-import com.intuisis.binarygame.helpers.DBHelper;
-import com.intuisis.binarygame.helpers.SessionManager;
+import com.bigscreen.binarygame.helpers.DBHelper;
+import com.bigscreen.binarygame.helpers.SessionManager;
 
 /**
  * Created by gallant on 02/03/15.
@@ -46,7 +46,7 @@ public class BGApplication extends Application {
     /**
      * Get session manager of application.
      * Session manager is class to manage data on {@link android.content.SharedPreferences}.
-     * @return {@link com.intuisis.binarygame.helpers.SessionManager}
+     * @return {@link com.bigscreen.binarygame.helpers.SessionManager}
      */
     public SessionManager getSession() {
         if (sessionManager == null)
@@ -57,7 +57,7 @@ public class BGApplication extends Application {
 
     /**
      * Get database helper of application.
-     * @return {@link com.intuisis.binarygame.helpers.DBHelper}
+     * @return {@link com.bigscreen.binarygame.helpers.DBHelper}
      */
     public DBHelper getDatabase() {
         if (dbHelper == null)

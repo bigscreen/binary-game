@@ -1,12 +1,10 @@
-package com.intuisis.binarygame.entities;
+package com.bigscreen.binarygame.entities;
 
 import android.text.format.DateFormat;
 
 import java.util.Date;
 
-/**
- * Created by gallant on 16/03/15.
- */
+
 public class ScoreEntity {
 
     private static final String DEFAULT_FORMAT = "dd/MM/yy, HH:mm";

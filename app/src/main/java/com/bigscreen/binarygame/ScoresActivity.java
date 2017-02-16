@@ -1,4 +1,4 @@
-package com.intuisis.binarygame;
+package com.bigscreen.binarygame;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,14 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.intuisis.binarygame.adapters.ScoreAdapter;
-import com.intuisis.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.adapters.ScoreAdapter;
+import com.bigscreen.binarygame.entities.ScoreEntity;
 
 import java.util.List;
 
-/**
- * Created by gallant on 16/03/15.
- */
+
 public class ScoresActivity extends Activity {
 
     private static final String TAG = ScoresActivity.class.getSimpleName();

@@ -1,21 +1,16 @@
-package com.intuisis.binarygame.view.dialogs;
+package com.bigscreen.binarygame.view.dialogs;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import com.intuisis.binarygame.R;
+import com.bigscreen.binarygame.R;
 
-/**
- * Created by gallant on 17/03/15.
- */
+
 public class PauseDialog extends Dialog implements View.OnClickListener {
 
     public static final int BUTTON_PLAY = 1;

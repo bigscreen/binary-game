@@ -1,4 +1,4 @@
-package com.intuisis.binarygame;
+package com.bigscreen.binarygame;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -19,15 +19,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.intuisis.binarygame.adapters.LineAdapter;
-import com.intuisis.binarygame.entities.LineEntity;
-import com.intuisis.binarygame.entities.ScoreEntity;
-import com.intuisis.binarygame.extras.CustomCountDownTimer;
-import com.intuisis.binarygame.fragments.Keyboard;
-import com.intuisis.binarygame.helpers.AppHelper;
-import com.intuisis.binarygame.view.dialogs.BeautyDialog;
-import com.intuisis.binarygame.view.dialogs.PauseDialog;
-import com.intuisis.binarygame.view.items.LineItem;
+import com.bigscreen.binarygame.adapters.LineAdapter;
+import com.bigscreen.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.extras.CustomCountDownTimer;
+import com.bigscreen.binarygame.fragments.Keyboard;
+import com.bigscreen.binarygame.helpers.AppHelper;
+import com.bigscreen.binarygame.view.dialogs.BeautyDialog;
+import com.bigscreen.binarygame.view.dialogs.PauseDialog;
+import com.bigscreen.binarygame.view.items.LineItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -400,7 +400,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     /**
      * Check line item count if it is already same with result line or not.
-     * @param lineEntity {@link com.intuisis.binarygame.entities.LineEntity} which will be checked.
+     * @param lineEntity {@link com.bigscreen.binarygame.entities.LineEntity} which will be checked.
      * @return true if its count is same, dan false if not.
      */
     private boolean isAnswerTrue(LineEntity lineEntity) {

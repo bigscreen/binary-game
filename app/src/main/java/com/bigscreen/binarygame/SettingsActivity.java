@@ -1,4 +1,4 @@
-package com.intuisis.binarygame;
+package com.bigscreen.binarygame;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,9 +8,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
-/**
- * Created by gallant on 16/03/15.
- */
+
 public class SettingsActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = SettingsActivity.class.getSimpleName();

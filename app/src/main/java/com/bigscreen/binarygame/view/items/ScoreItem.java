@@ -1,15 +1,13 @@
-package com.intuisis.binarygame.view.items;
+package com.bigscreen.binarygame.view.items;
 
 import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.intuisis.binarygame.R;
-import com.intuisis.binarygame.entities.ScoreEntity;
+import com.bigscreen.binarygame.R;
+import com.bigscreen.binarygame.entities.ScoreEntity;
 
-/**
- * Created by gallant on 16/03/15.
- */
+
 public class ScoreItem extends LinearLayout {
 
     private static final String TAG = ScoreItem.class.getSimpleName();

@@ -1,4 +1,4 @@
-package com.intuisis.binarygame.fragments;
+package com.bigscreen.binarygame.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.intuisis.binarygame.R;
+import com.bigscreen.binarygame.R;
 
-/**
- * Created by gallant on 06/03/15.
- */
+
 public class Keyboard extends Fragment implements View.OnClickListener {
 
     private static final String TAG = Keyboard.class.getSimpleName();

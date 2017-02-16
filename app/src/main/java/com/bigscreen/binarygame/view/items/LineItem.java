@@ -1,21 +1,15 @@
-package com.intuisis.binarygame.view.items;
+package com.bigscreen.binarygame.view.items;
 
 import android.content.Context;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.intuisis.binarygame.R;
-import com.intuisis.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.entities.LineEntity;
+import com.bigscreen.binarygame.R;
 
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by gallant on 02/03/15.
- */
 public class LineItem extends LinearLayout implements View.OnClickListener {
 
     private static final String TAG = LineItem.class.getSimpleName();

@@ -1,12 +1,8 @@
-package com.intuisis.binarygame.entities;
+package com.bigscreen.binarygame.entities;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-/**
- * Created by gallant on 02/03/15.
- */
+
 public class LineEntity {
 
     public static final int GAME_MODE_ONE = 1;
