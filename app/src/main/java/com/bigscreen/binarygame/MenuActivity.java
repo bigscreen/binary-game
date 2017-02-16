@@ -140,11 +140,12 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     }
 
     private void share() {
+        String playStoreUri = String.format(getString(R.string.play_store_uri_format), getPackageName());
+        String shareMessage = String.format("%s\n%s", getString(R.string.share_message), playStoreUri);
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_message) + "\n"
-                + getString(R.string.share_uri));
+        intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         startActivity(intent);
     }
 

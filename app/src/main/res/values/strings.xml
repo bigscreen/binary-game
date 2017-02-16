@@ -39,10 +39,10 @@
     <string name="one">1</string>
     <string name="max_lines">15</string>
 
-    <string name="txt_about">Binary game v 1.0 developed by Binary Game Development Team.</string>
+    <string name="txt_about">Binary game v 1.0.1 \n by BigScreen</string>
     <string name="txt_highest_score">Cool, you got the first rank!</string>
     <string name="share_message">Now learn binary conversion becomes easy and fun. Download Binary Game, and convert them all!</string>
-    <string name="share_uri">http://www.binary-game.com</string>
+    <string name="play_store_uri_format">https://play.google.com/store/apps/details?id=%s</string>
     <string name="share_score">I got %1$d score in level %2$d.</string>
     <string name="warning_screen_resolution">Your device screen resolution is too small. We can\'t guarantee Binary Game will works well on your device.</string>
 </resources>
