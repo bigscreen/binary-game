@@ -18,8 +18,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
     private boolean isPaused = false;
 
-    private BGApplication app;
-    private Button btnStart, btnHighScores, btnSettings, btnAbout;
+    private BGApplication application;
+    private Button buttonStart, buttonHighScores, buttonSettings, buttonAbout;
     private boolean justShared = false;
 
     @Override
@@ -27,36 +27,34 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        app = (BGApplication) getApplication();
+        application = (BGApplication) getApplication();
 
-        btnStart = (Button) findViewById(R.id.btn_start);
-        btnHighScores = (Button) findViewById(R.id.btn_high_scores);
-        btnSettings = (Button) findViewById(R.id.btn_settings);
-        btnAbout = (Button) findViewById(R.id.btn_about);
+        buttonStart = (Button) findViewById(R.id.button_start);
+        buttonHighScores = (Button) findViewById(R.id.button_high_scores);
+        buttonSettings = (Button) findViewById(R.id.button_settings);
+        buttonAbout = (Button) findViewById(R.id.button_about);
 
-        btnStart.setOnClickListener(this);
-        btnHighScores.setOnClickListener(this);
-        btnSettings.setOnClickListener(this);
-        btnAbout.setOnClickListener(this);
+        buttonStart.setOnClickListener(this);
+        buttonHighScores.setOnClickListener(this);
+        buttonSettings.setOnClickListener(this);
+        buttonAbout.setOnClickListener(this);
 
-        app.initBackSound(R.raw.backsound);
-        app.playBackSound();
+        application.initBackSound(R.raw.backsound);
+        application.playBackSound();
 
-        checkDeviceScreen(app.getScreenSize(this)[0], app.getScreenSize(this)[1]);
+        checkDeviceScreen(application.getScreenSize(this)[0], application.getScreenSize(this)[1]);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG, "onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG, "onResume");
         if (isPaused) {
-            app.playBackSound();
+            application.playBackSound();
             isPaused = false;
         }
     }
@@ -64,15 +62,13 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "onPause");
-        app.pauseBackSound();
+        application.pauseBackSound();
         isPaused = true;
     }
 
     @Override
     protected void onDestroy() {
-        app.stopAndReleaseBackSound();
-        Log.e(TAG, "onDestroy");
+        application.stopAndReleaseBackSound();
         super.onDestroy();
     }
 
@@ -94,53 +90,53 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void showConfirmExit() {
-        BeautyDialog confirmDialogExit = new BeautyDialog(this);
-        confirmDialogExit.setCancelable(true);
-        confirmDialogExit.setMessage(R.string.confirm_exit_app);
-        confirmDialogExit.setPositiveButton(new BeautyDialog.OnClickListener() {
+    private void showExitConfirmation() {
+        BeautyDialog confirmExitDialog = new BeautyDialog(this);
+        confirmExitDialog.setCancelable(true);
+        confirmExitDialog.setMessage(R.string.confirm_exit_app);
+        confirmExitDialog.setPositiveButton(new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
                 finish();
             }
         });
-        confirmDialogExit.setNegativeButton(new BeautyDialog.OnClickListener() {
+        confirmExitDialog.setNegativeButton(new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
                 dialog.cancel();
             }
         });
-        confirmDialogExit.setOnDismissListener(new DialogInterface.OnDismissListener() {
+        confirmExitDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                app.playEffect(R.raw.effect_back);
+                application.playEffect(R.raw.effect_back);
             }
         });
-        confirmDialogExit.show();
+        confirmExitDialog.show();
     }
 
     private void showAbout() {
-        BeautyDialog dialogAbout = new BeautyDialog(this);
-        dialogAbout.setCancelable(true);
-        dialogAbout.setTitle(R.string.about);
-        dialogAbout.setMessage(R.string.txt_about);
-        dialogAbout.setPositiveButton(R.string.share, new BeautyDialog.OnClickListener() {
+        BeautyDialog aboutDialog = new BeautyDialog(this);
+        aboutDialog.setCancelable(true);
+        aboutDialog.setTitle(R.string.about);
+        aboutDialog.setMessage(R.string.txt_about);
+        aboutDialog.setPositiveButton(R.string.share, new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
                 justShared = true;
-                app.playEffect(R.raw.effect_button_clicked);
+                application.playEffect(R.raw.effect_button_clicked);
                 share();
             }
         });
-        dialogAbout.setOnDismissListener(new DialogInterface.OnDismissListener() {
+        aboutDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 if (!justShared)
-                    app.playEffect(R.raw.effect_back);
+                    application.playEffect(R.raw.effect_back);
                 justShared = false;
             }
         });
-        dialogAbout.show();
+        aboutDialog.show();
     }
 
     private void share() {
@@ -155,23 +151,23 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_start : {
-                app.playEffect(R.raw.effect_button_clicked);
+            case R.id.button_start : {
+                application.playEffect(R.raw.effect_button_clicked);
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             }
-            case R.id.btn_high_scores : {
-                app.playEffect(R.raw.effect_button_clicked);
+            case R.id.button_high_scores : {
+                application.playEffect(R.raw.effect_button_clicked);
                 startActivity(new Intent(this, ScoresActivity.class));
                 break;
             }
-            case R.id.btn_settings : {
-                app.playEffect(R.raw.effect_button_clicked);
+            case R.id.button_settings : {
+                application.playEffect(R.raw.effect_button_clicked);
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
             }
-            case R.id.btn_about : {
-                app.playEffect(R.raw.effect_button_clicked);
+            case R.id.button_about : {
+                application.playEffect(R.raw.effect_button_clicked);
                 showAbout();
                 break;
             }
@@ -180,7 +176,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        app.playEffect(R.raw.effect_button_clicked);
-        showConfirmExit();
+        application.playEffect(R.raw.effect_button_clicked);
+        showExitConfirmation();
     }
 }

@@ -32,18 +32,20 @@ import com.bigscreen.binarygame.view.items.LineItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements LineItem.OnLineItemClickListener,
         Keyboard.OnKeyboardItemClickListener, View.OnClickListener, PauseDialog.PauseDialogListener{
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String PREFIX_NUMBER = "%d";
     private static final int LINE_LENGTH = 8;
     private static final int MAX_LINES = 7;
     private static final int MAX_LINES_PER_LEVEL = 15;
     private static final int MAX_LEVEL = 10;
 
-    private BGApplication app;
+    private BGApplication application;
 
     private int canvasHeight, lineHeight, decimalHintHeight, canvasMargin;
 
@@ -56,16 +58,17 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     private Animation lineAddedAnim, lineRemovedAnim, keyboardAttachedAnim, keyboardDetachedAnim;
 
-    private LinearLayout llCanvas;
+    private LinearLayout layoutCanvas;
     private LineAdapter lineAdapter;
     private FrameLayout frameKeyboard;
-    private ImageView ivBtnPause;
-    private TextView selectedTextView, tvScore, tvLevel, tvLines;
+    private ImageView imageBtnPause;
+    private TextView selectedTextView;
+    private TextView textScore, textLevel, textLines;
     private LineEntity selectedLineEntity;
     private CustomCountDownTimer lineCountDown;
     private PauseDialog pauseDialog;
     private BeautyDialog confirmDialogRestart;
-    private PowerManager.WakeLock wakeLock;
+    private PowerManager.WakeLock wakeLockManager;
     private MediaPlayer mpBackSound;
 
     @Override
@@ -73,11 +76,11 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        app = (BGApplication) getApplication();
+        application = (BGApplication) getApplication();
 
         decimalHintHeight = getResources().getDimensionPixelSize(R.dimen.decimal_hint_height);
         canvasMargin = getResources().getDimensionPixelSize(R.dimen.game_canvas_horizontal_margin);
-        canvasHeight = app.getScreenSize(this)[1] - ((2*decimalHintHeight));
+        canvasHeight = application.getScreenSize(this)[1] - ((2 * decimalHintHeight));
         lineHeight = canvasHeight / MAX_LINES;
 
         lineAddedAnim = AnimationUtils.loadAnimation(this, R.anim.line_added);
@@ -85,20 +88,20 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         keyboardAttachedAnim = AnimationUtils.loadAnimation(this, R.anim.keyboard_attached);
         keyboardDetachedAnim = AnimationUtils.loadAnimation(this, R.anim.keyboard_detached);
 
-        llCanvas = (LinearLayout) findViewById(R.id.ll_game_canvas);
+        layoutCanvas = (LinearLayout) findViewById(R.id.layout_game_canvas);
         frameKeyboard = (FrameLayout) findViewById(R.id.frame_keyboard);
-        tvScore = (TextView) findViewById(R.id.tv_score);
-        tvLevel = (TextView) findViewById(R.id.tv_level);
-        tvLines = (TextView) findViewById(R.id.tv_lines);
-        ivBtnPause = (ImageView) findViewById(R.id.iv_btn_pause);
+        textScore = (TextView) findViewById(R.id.text_score);
+        textLevel = (TextView) findViewById(R.id.text_level);
+        textLines = (TextView) findViewById(R.id.text_lines);
+        imageBtnPause = (ImageView) findViewById(R.id.image_btn_pause);
 
-        lineAdapter = new LineAdapter(this, llCanvas, lineHeight);
+        lineAdapter = new LineAdapter(this, layoutCanvas, lineHeight);
         pauseDialog = new PauseDialog(this, this);
 
         lineAdapter.setData(new ArrayList<LineEntity>());
-        highestScore = app.getDatabase().getHighestScore().getScore();
+        highestScore = application.getDatabase().getHighestScore().getScore();
 
-        ivBtnPause.setOnClickListener(this);
+        imageBtnPause.setOnClickListener(this);
         pauseDialog.setOnShowListener(onShowListener);
         pauseDialog.setOnDismissListener(onDialogDismissListener);
 
@@ -113,14 +116,13 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG, "onStart");
+        Log.d(TAG, "onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG, "OnResume");
-        Log.i(TAG, "" + lineAdapter.getList());
+        Log.i(TAG, "OnResume, lineAdapter.getList()= " + lineAdapter.getList());
         if (isPaused && !isDialogShowed) {
             playBackSound();
             if (flagGameState > 2) {
@@ -134,8 +136,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "OnPause");
-        Log.i(TAG, "" + lineAdapter.getList());
+        Log.i(TAG, "OnPause, lineAdapter.getList()= " + lineAdapter.getList());
         isPaused = true;
         pauseBackSound();
         if (flagGameState > 2)
@@ -148,9 +149,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     protected void onDestroy() {
         lineCountDown.cancel();
         stopAndReleaseBackSound();
-        wakeLock.release();
-        Log.e(TAG, "onDestroy");
-        Log.i(TAG, "" + lineAdapter.getList());
+        wakeLockManager.release();
+        Log.i(TAG, "onDestroy, lineAdapter.getList()= " + lineAdapter.getList());
         super.onDestroy();
     }
 
@@ -264,7 +264,6 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
             @Override
             public void onTick(long millisUntilFinished) {
-                //do nothing
                 tick++;
                 Log.e(TAG, "onTick, " + tick);
                 if (tick == (limit/1000)) {
@@ -313,8 +312,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
         if (!isAnswerTrue(lineEntity)) {
             lineAdapter.appendSingleData(lineEntity);
-            llCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
-            app.playEffect(R.raw.effect_line_added);
+            layoutCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
+            application.playEffect(R.raw.effect_line_added);
             linesLength++;
             flagGameState++;
         } else {
@@ -353,8 +352,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
         if (!isAnswerTrue(lineEntity)) {
             lineAdapter.appendSingleData(lineEntity);
-            llCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
-            app.playEffect(R.raw.effect_line_added);
+            layoutCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
+            application.playEffect(R.raw.effect_line_added);
             linesLength++;
             flagGameState++;
             if (frameKeyboard.getVisibility() == View.VISIBLE) {
@@ -371,8 +370,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * @param position index on list.
      */
     private void removeData(final int position) {
-        llCanvas.getChildAt(position).startAnimation(lineRemovedAnim);
-        app.playEffect(R.raw.effect_line_removed);
+        layoutCanvas.getChildAt(position).startAnimation(lineRemovedAnim);
+        application.playEffect(R.raw.effect_line_removed);
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 lineAdapter.removeData(position);
@@ -412,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             }
             itemIndex++;
         }
-        return (tempCount == lineEntity.getResult());
+        return tempCount == lineEntity.getResult();
     }
 
     /**
@@ -433,8 +432,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         } else {
             score = score + 100;
         }
-        tvScore.setText("" + score);
-        tvLines.setText("" + lineState);
+        textScore.setText(getTextFromNumber(score));
+        textLines.setText(getTextFromNumber(lineState));
         setLevelState();
     }
 
@@ -453,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
                 timeLimit = timePerLevel[levelState - 1];
                 initCountDown(timeLimit);
                 lineCountDown.start();
-                tvLevel.setText("" + levelState);
+                textLevel.setText(getTextFromNumber(lineState));
                 Log.i(TAG, "Lines left per level = " + MAX_LINES_PER_LEVEL);
             }
         }
@@ -473,7 +472,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         scoreEntity.setLines(lineState);
         scoreEntity.setTime(System.currentTimeMillis() / 1000);
 
-        if (app.getDatabase().insertScore(scoreEntity))
+        if (application.getDatabase().insertScore(scoreEntity))
             Log.i(TAG, "Game score saved!");
         else
             Log.e(TAG, "Game score could not saved!");
@@ -490,14 +489,14 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             confirmDialogRestart.setPositiveButton(new BeautyDialog.OnClickListener() {
                 @Override
                 public void onClick(Dialog dialog, int which) {
-                    app.playEffect(R.raw.effect_button_clicked);
+                    application.playEffect(R.raw.effect_button_clicked);
                     restartGame();
                 }
             });
             confirmDialogRestart.setNegativeButton(new BeautyDialog.OnClickListener() {
                 @Override
                 public void onClick(Dialog dialog, int which) {
-                    app.playEffect(R.raw.effect_back);
+                    application.playEffect(R.raw.effect_back);
                     dialog.dismiss();
                 }
             });
@@ -522,7 +521,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         confirmDialogExit.setNegativeButton(new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
-                app.playEffect(R.raw.effect_back);
+                application.playEffect(R.raw.effect_back);
                 dialog.cancel();
             }
         });
@@ -541,7 +540,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             pauseDialog.dismiss();
         }
         saveScore();
-        app.playEffect(R.raw.effect_back);
+        application.playEffect(R.raw.effect_back);
         finish();
     }
 
@@ -559,7 +558,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             goMessage = getString(R.string.score) + ":\n" + score;
         }
 
-        app.playEffect(R.raw.effect_game_over);
+        application.playEffect(R.raw.effect_game_over);
 
         BeautyDialog gameOverDialog;
         gameOverDialog = new BeautyDialog(this);
@@ -569,14 +568,14 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         gameOverDialog.setPositiveButton(R.string.play_again, new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
-                app.playEffect(R.raw.effect_button_clicked);
+                application.playEffect(R.raw.effect_button_clicked);
                 restartGame();
             }
         });
         gameOverDialog.setNegativeButton(R.string.exit, new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
-                app.playEffect(R.raw.effect_back);
+                application.playEffect(R.raw.effect_back);
                 readyToExit = true;
                 finish();
             }
@@ -588,9 +587,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Setup {@link android.os.PowerManager.WakeLock}, it will make screen keep awake.
      */
     private void initWakeLock() {
-        wakeLock = ((PowerManager) getSystemService(Context.POWER_SERVICE))
+        wakeLockManager = ((PowerManager) getSystemService(Context.POWER_SERVICE))
                 .newWakeLock(PowerManager.FULL_WAKE_LOCK, TAG);
-        wakeLock.acquire();
+        wakeLockManager.acquire();
     }
 
     /**
@@ -606,7 +605,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Show game keyboard within its animation.
      */
     private void showKeyboard() {
-        ivBtnPause.setVisibility(View.GONE);
+        imageBtnPause.setVisibility(View.GONE);
         frameKeyboard.setVisibility(View.VISIBLE);
         frameKeyboard.startAnimation(keyboardAttachedAnim);
     }
@@ -619,7 +618,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 frameKeyboard.setVisibility(View.GONE);
-                ivBtnPause.setVisibility(View.VISIBLE);
+                imageBtnPause.setVisibility(View.VISIBLE);
             }
         }, keyboardDetachedAnim.getDuration());
     }
@@ -637,7 +636,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Play game back sound music.
      */
     private void playBackSound() {
-        if (!app.getSession().isMusicEnabled() || mpBackSound == null)
+        if (!application.getSession().isMusicEnabled() || mpBackSound == null)
             return;
         if (!mpBackSound.isPlaying())
             mpBackSound.start();
@@ -704,7 +703,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onLineItemClick(View v, int parentPosition, int itemPosition, LineEntity lineEntity) {
-        app.playEffect(R.raw.effect_button_clicked);
+        application.playEffect(R.raw.effect_button_clicked);
         selectedPosition = parentPosition;
         selectedLineEntity = lineEntity;
         if (itemPosition == LineItem.RESULT_CLICK) {
@@ -720,7 +719,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onKeyboardItemClick(View v, int key) {
-        app.playEffect(R.raw.effect_button_clicked);
+        application.playEffect(R.raw.effect_button_clicked);
         CharSequence strTemp = selectedTextView.getText().toString();
         if (key == Keyboard.KEY_DELETE) {
             CharSequence strDeleted = "";
@@ -751,9 +750,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onClick(View v) {
-        app.playEffect(R.raw.effect_button_clicked);
+        application.playEffect(R.raw.effect_button_clicked);
         switch (v.getId()) {
-            case R.id.iv_btn_pause : {
+            case R.id.image_btn_pause : {
                 onPause();
                 break;
             }
@@ -763,7 +762,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onPauseDialogClicked(int clickedButton) {
-        app.playEffect(R.raw.effect_button_clicked);
+        application.playEffect(R.raw.effect_button_clicked);
         switch (clickedButton) {
             case PauseDialog.BUTTON_PLAY : {
                 pauseDialog.dismiss();
@@ -788,11 +787,15 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onBackPressed() {
-        app.playEffect(R.raw.effect_button_clicked);
+        application.playEffect(R.raw.effect_button_clicked);
         showConfirmExit(true);
         lineCountDown.pause();
         isDialogShowed = true;
         isPaused = true;
         pauseBackSound();
+    }
+
+    private String getTextFromNumber(long number) {
+        return String.format(Locale.getDefault(), PREFIX_NUMBER, number);
     }
 }

@@ -8,7 +8,7 @@
     android:background="@drawable/bg_background_other">
 
     <com.neopixl.pixlui.components.textview.TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,12 +21,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
+        android:layout_below="@+id/text_title"
         android:layout_marginTop="@dimen/setting_body_vertical_margin"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/ll_music_bg"
+            android:id="@+id/layout_music_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/basic_margin"
@@ -34,7 +34,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cb_music_bg"
+                android:id="@+id/checkbox_music_bg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_checkbox"
@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:textSize="30sp"
                 android:textColor="@color/accent"
                 android:text="@string/music_bg"
@@ -52,7 +53,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_sound_fx"
+            android:id="@+id/layout_sound_fx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -61,7 +62,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cb_sound_fx"
+                android:id="@+id/checkbox_sound_fx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_checkbox"
@@ -71,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:textSize="30sp"
                 android:textColor="@color/accent"
                 android:text="@string/sound_fx"

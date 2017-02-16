@@ -11,9 +11,7 @@ import android.view.Display;
 import com.bigscreen.binarygame.helpers.DBHelper;
 import com.bigscreen.binarygame.helpers.SessionManager;
 
-/**
- * Created by gallant on 02/03/15.
- */
+
 public class BGApplication extends Application {
 
     private SessionManager sessionManager;
@@ -23,8 +21,8 @@ public class BGApplication extends Application {
     /**
      * Get screen size current activity.
      * Use [0] to get screen width or [1] to get screen height.
-     * @param {@link Activity}
-     * @return int[2]
+     * @param activity {@link android.app.Activity}
+     * @return int[2], index 0 for width and 1 for height
      */
     public int[] getScreenSize(Activity activity) {
         int width, height;

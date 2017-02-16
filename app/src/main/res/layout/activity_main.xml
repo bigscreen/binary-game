@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/bg_background"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="DisableBaselineAlignment">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -29,10 +30,11 @@
                 android:textSize="11sp"
                 android:text="@string/score"
                 android:background="@color/primary_dark"
-                pixlui:typeface="Pixelmix.ttf"/>
+                pixlui:typeface="Pixelmix.ttf"
+                tools:ignore="SmallSp" />
 
             <com.neopixl.pixlui.components.textview.TextView
-                android:id="@+id/tv_score"
+                android:id="@+id/text_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
@@ -72,10 +74,11 @@
                     android:textSize="11sp"
                     android:text="@string/level"
                     android:background="@color/primary_dark"
-                    pixlui:typeface="Pixelmix.ttf"/>
+                    pixlui:typeface="Pixelmix.ttf"
+                    tools:ignore="SmallSp" />
 
                 <com.neopixl.pixlui.components.textview.TextView
-                    android:id="@+id/tv_level"
+                    android:id="@+id/text_level"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
@@ -96,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="right">
+                android:gravity="end">
 
                 <com.neopixl.pixlui.components.textview.TextView
                     android:layout_width="wrap_content"
@@ -109,13 +112,14 @@
                     android:textSize="11sp"
                     android:text="@string/lines"
                     android:background="@color/primary_dark"
-                    pixlui:typeface="Pixelmix.ttf"/>
+                    pixlui:typeface="Pixelmix.ttf"
+                    tools:ignore="SmallSp" />
 
                 <com.neopixl.pixlui.components.textview.TextView
-                    android:id="@+id/tv_lines"
+                    android:id="@+id/text_lines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="5dp"
@@ -137,7 +141,7 @@
             android:layout_marginTop="25dp">
 
             <ImageView
-                android:id="@+id/iv_btn_pause"
+                android:id="@+id/image_btn_pause"
                 android:layout_width="@dimen/game_btn_size"
                 android:layout_height="@dimen/game_btn_size"
                 android:layout_margin="5dp"
@@ -164,7 +168,7 @@
         android:layout_weight="7.5">
 
         <LinearLayout
-            android:id="@+id/ll_decimal_hint_top"
+            android:id="@+id/layout_decimal_hint_top"
             android:layout_width="match_parent"
             android:layout_height="@dimen/decimal_hint_height"
             android:orientation="horizontal"
@@ -285,7 +289,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_decimal_hint_bottom"
+            android:id="@+id/layout_decimal_hint_bottom"
             android:layout_width="match_parent"
             android:layout_height="@dimen/decimal_hint_height"
             android:orientation="horizontal"
@@ -406,11 +410,11 @@
          </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_game_canvas"
+            android:id="@+id/layout_game_canvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/ll_decimal_hint_top"
-            android:layout_above="@+id/ll_decimal_hint_bottom"
+            android:layout_below="@+id/layout_decimal_hint_top"
+            android:layout_above="@+id/layout_decimal_hint_bottom"
             android:orientation="vertical"
             android:gravity="bottom" />
 

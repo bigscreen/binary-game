@@ -2,7 +2,6 @@ package com.bigscreen.binarygame;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -15,45 +14,43 @@ public class SettingsActivity extends Activity implements View.OnClickListener, 
 
     private boolean isPaused = false;
 
-    private BGApplication app;
-    private LinearLayout llMusicBg, llSoundFx;
-    private CheckBox cbMusicBg, cbSoundFx;
+    private BGApplication application;
+    private LinearLayout layoutMusicBg, layoutSoundFx;
+    private CheckBox checkboxMusicBg, checkboxSoundFx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        app = (BGApplication) getApplication();
+        application = (BGApplication) getApplication();
 
-        llMusicBg = (LinearLayout) findViewById(R.id.ll_music_bg);
-        llSoundFx = (LinearLayout) findViewById(R.id.ll_sound_fx);
-        cbMusicBg = (CheckBox) findViewById(R.id.cb_music_bg);
-        cbSoundFx = (CheckBox) findViewById(R.id.cb_sound_fx);
+        layoutMusicBg = (LinearLayout) findViewById(R.id.layout_music_bg);
+        layoutSoundFx = (LinearLayout) findViewById(R.id.layout_sound_fx);
+        checkboxMusicBg = (CheckBox) findViewById(R.id.checkbox_music_bg);
+        checkboxSoundFx = (CheckBox) findViewById(R.id.checkbox_sound_fx);
 
-        llMusicBg.setOnClickListener(this);
-        llSoundFx.setOnClickListener(this);
-        cbMusicBg.setOnCheckedChangeListener(this);
-        cbSoundFx.setOnCheckedChangeListener(this);
+        layoutMusicBg.setOnClickListener(this);
+        layoutSoundFx.setOnClickListener(this);
+        checkboxMusicBg.setOnCheckedChangeListener(this);
+        checkboxSoundFx.setOnCheckedChangeListener(this);
 
-        cbMusicBg.setChecked(app.getSession().isMusicEnabled());
-        cbSoundFx.setChecked(app.getSession().isSoundFxEnabled());
+        checkboxMusicBg.setChecked(application.getSession().isMusicEnabled());
+        checkboxSoundFx.setChecked(application.getSession().isSoundFxEnabled());
 
-        app.playBackSound();
+        application.playBackSound();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG, "onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG, "onResume");
         if (isPaused) {
-            app.playBackSound();
+            application.playBackSound();
             isPaused = false;
         }
     }
@@ -61,56 +58,54 @@ public class SettingsActivity extends Activity implements View.OnClickListener, 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "onPause");
-        app.pauseBackSound();
+        application.pauseBackSound();
         isPaused = true;
     }
 
     @Override
     protected void onDestroy() {
-        Log.e(TAG, "onDestroy");
         super.onDestroy();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_music_bg : {
-                if (cbMusicBg.isChecked()) {
-                    cbMusicBg.setChecked(false);
+            case R.id.layout_music_bg : {
+                if (checkboxMusicBg.isChecked()) {
+                    checkboxMusicBg.setChecked(false);
                 } else {
-                    cbMusicBg.setChecked(true);
+                    checkboxMusicBg.setChecked(true);
                 }
                 break;
             }
-            case R.id.ll_sound_fx : {
-                if (cbSoundFx.isChecked()) {
-                    cbSoundFx.setChecked(false);
+            case R.id.layout_sound_fx : {
+                if (checkboxSoundFx.isChecked()) {
+                    checkboxSoundFx.setChecked(false);
                 } else {
-                    cbSoundFx.setChecked(true);
+                    checkboxSoundFx.setChecked(true);
                 }
                 break;
             }
             default: break;
         }
-        app.playEffect(R.raw.effect_button_clicked);
+        application.playEffect(R.raw.effect_button_clicked);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
-            case R.id.cb_music_bg : {
+            case R.id.checkbox_music_bg : {
                 if (isChecked) {
-                    app.getSession().setMusicEnabled(isChecked);
-                    app.playBackSound();
+                    application.getSession().setMusicEnabled(true);
+                    application.playBackSound();
                 } else {
-                    app.pauseBackSound();
-                    app.getSession().setMusicEnabled(isChecked);
+                    application.pauseBackSound();
+                    application.getSession().setMusicEnabled(true);
                 }
                 break;
             }
-            case R.id.cb_sound_fx : {
-                app.getSession().setSoundFxEnabled(isChecked);
+            case R.id.checkbox_sound_fx : {
+                application.getSession().setSoundFxEnabled(isChecked);
                 break;
             }
             default: break;
@@ -119,7 +114,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener, 
 
     @Override
     public void onBackPressed() {
-        app.playEffect(R.raw.effect_back);
+        application.playEffect(R.raw.effect_back);
         super.onBackPressed();
     }
 }

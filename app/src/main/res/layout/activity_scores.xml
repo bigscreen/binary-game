@@ -9,7 +9,7 @@
     android:background="@drawable/bg_background_other">
 
     <com.neopixl.pixlui.components.textview.TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,8 +22,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_title"
-        android:layout_above="@+id/btn_share_score"
+        android:layout_below="@+id/text_title"
+        android:layout_above="@+id/button_share_score"
         android:layout_marginTop="@dimen/setting_body_vertical_margin"
         android:orientation="vertical">
 
@@ -53,7 +53,7 @@
                 pixlui:typeface="Cave-Story.ttf"/>
 
             <com.neopixl.pixlui.components.textview.TextView
-                android:id="@+id/tv_item_level"
+                android:id="@+id/text_item_level"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -64,7 +64,7 @@
                 pixlui:typeface="Cave-Story.ttf"/>
 
             <com.neopixl.pixlui.components.textview.TextView
-                android:id="@+id/tv_item_lines"
+                android:id="@+id/text_item_lines"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,7 +75,7 @@
                 pixlui:typeface="Cave-Story.ttf"/>
 
             <com.neopixl.pixlui.components.textview.TextView
-                android:id="@+id/tv_item_time"
+                android:id="@+id/text_item_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.5"
@@ -88,7 +88,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/lv_scores"
+            android:id="@+id/list_scores"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@android:color/transparent"
@@ -97,7 +97,7 @@
     </LinearLayout>
 
     <com.neopixl.pixlui.components.button.Button
-        android:id="@+id/btn_share_score"
+        android:id="@+id/button_share_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

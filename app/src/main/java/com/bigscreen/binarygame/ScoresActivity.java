@@ -3,7 +3,6 @@ package com.bigscreen.binarygame;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,8 +20,8 @@ public class ScoresActivity extends Activity {
     private boolean isPaused = false;
 
     private BGApplication app;
-    private ListView lvScores;
-    private Button shareScore;
+    private ListView listScores;
+    private Button buttonShareScore;
     private ScoreAdapter scoreAdapter;
     private List<ScoreEntity> scoreEntities;
 
@@ -33,20 +32,20 @@ public class ScoresActivity extends Activity {
 
         app = (BGApplication) getApplication();
 
-        lvScores = (ListView) findViewById(R.id.lv_scores);
-        shareScore = (Button) findViewById(R.id.btn_share_score);
+        listScores = (ListView) findViewById(R.id.list_scores);
+        buttonShareScore = (Button) findViewById(R.id.button_share_score);
         scoreAdapter = new ScoreAdapter(this);
         scoreEntities = app.getDatabase().getScores();
 
-        lvScores.setAdapter(scoreAdapter);
+        listScores.setAdapter(scoreAdapter);
         scoreAdapter.setData(scoreEntities);
 
-        shareScore.setOnClickListener(new View.OnClickListener() {
+        buttonShareScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 app.playEffect(R.raw.effect_button_clicked);
-                String score = "" + scoreEntities.get(0).getScore();
-                String level = "" + scoreEntities.get(0).getLevel();
+                long score = scoreEntities.get(0).getScore();
+                long level = scoreEntities.get(0).getLevel();
                 String shareText = String.format(getString(R.string.share_score), score, level);
                 share(shareText);
             }
@@ -58,13 +57,11 @@ public class ScoresActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG, "onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG, "onResume");
         if (isPaused) {
             app.playBackSound();
             isPaused = false;
@@ -74,14 +71,12 @@ public class ScoresActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "onPause");
         app.pauseBackSound();
         isPaused = true;
     }
 
     @Override
     protected void onDestroy() {
-        Log.e(TAG, "onDestroy");
         super.onDestroy();
     }
 
