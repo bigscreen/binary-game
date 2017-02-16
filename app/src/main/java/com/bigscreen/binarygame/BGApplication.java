@@ -26,7 +26,7 @@ public class BGApplication extends Application {
      */
     public int[] getScreenSize(Activity activity) {
         int width, height;
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             Point size = new Point();
             activity.getWindowManager().getDefaultDisplay().getSize(size);
             width = size.x;

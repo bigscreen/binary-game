@@ -1,86 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_background_menu">
+    android:background="@drawable/bg_background_menu"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
         android:paddingLeft="@dimen/menu_horizontal_padding"
         android:paddingRight="@dimen/menu_horizontal_padding"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true">
+        tools:ignore="DisableBaselineAlignment">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.neopixl.pixlui.components.button.Button
+            <com.bigscreen.binarygame.custom.GameButton
                 android:id="@+id/button_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/btn_menu_vertical_padding"
-                android:paddingBottom="@dimen/btn_menu_vertical_padding"
-                android:textColor="@color/white"
-                android:text="@string/start_cap"
-                android:textSize="32sp"
                 android:background="@drawable/bg_btn_primary_rounded"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:text="@string/start_cap"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:fontFamily="caveStory" />
 
-            <com.neopixl.pixlui.components.button.Button
+            <com.bigscreen.binarygame.custom.GameButton
                 android:id="@+id/button_high_scores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/btn_menu_vertical_padding"
-                android:paddingBottom="@dimen/btn_menu_vertical_padding"
-                android:textColor="@color/white"
-                android:text="@string/high_scores_cap"
-                android:textSize="32sp"
-                android:background="@drawable/bg_btn_primary_rounded"
                 android:layout_marginTop="15dp"
-                pixlui:typeface="Cave-Story.ttf"/>
-
+                android:background="@drawable/bg_btn_primary_rounded"
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:text="@string/high_scores_cap"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:fontFamily="caveStory" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.neopixl.pixlui.components.button.Button
+            <com.bigscreen.binarygame.custom.GameButton
                 android:id="@+id/button_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/btn_menu_vertical_padding"
-                android:paddingBottom="@dimen/btn_menu_vertical_padding"
-                android:textColor="@color/white"
-                android:text="@string/settings_cap"
-                android:textSize="32sp"
                 android:background="@drawable/bg_btn_primary_rounded"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:text="@string/settings_cap"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:fontFamily="caveStory" />
 
-            <com.neopixl.pixlui.components.button.Button
+            <com.bigscreen.binarygame.custom.GameButton
                 android:id="@+id/button_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/btn_menu_vertical_padding"
-                android:paddingBottom="@dimen/btn_menu_vertical_padding"
-                android:textColor="@color/white"
-                android:text="@string/about_cap"
-                android:textSize="32sp"
-                android:background="@drawable/bg_btn_primary_rounded"
                 android:layout_marginTop="15dp"
-                pixlui:typeface="Cave-Story.ttf"/>
+                android:background="@drawable/bg_btn_primary_rounded"
+                android:paddingBottom="@dimen/btn_menu_vertical_padding"
+                android:paddingTop="@dimen/btn_menu_vertical_padding"
+                android:text="@string/about_cap"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                app:fontFamily="caveStory" />
 
         </LinearLayout>
 
