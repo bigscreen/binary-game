@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:pixlui="http://schemas.android.com/apk/com.neopixl.pixlui"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/dialog_pause_width"
     android:layout_height="@dimen/dialog_pause_height"
     android:minWidth="@dimen/dialog_pause_width"
@@ -33,8 +34,6 @@
 
     </LinearLayout>
 
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,40 +41,44 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/iv_btn_play"
+            android:id="@+id/image_btn_play"
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_play_white"
-            android:background="@drawable/bg_btn_primary_pixelart"/>
+            android:background="@drawable/bg_btn_primary_pixelart"
+            tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/iv_btn_replay"
+            android:id="@+id/image_btn_replay"
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_replay_white"
-            android:background="@drawable/bg_btn_primary_pixelart"/>
+            android:background="@drawable/bg_btn_primary_pixelart"
+            tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/iv_btn_setting"
+            android:id="@+id/image_btn_setting"
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_setting_white"
-            android:background="@drawable/bg_btn_primary_pixelart"/>
+            android:background="@drawable/bg_btn_primary_pixelart"
+            tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/iv_btn_exit"
+            android:id="@+id/image_btn_exit"
             android:layout_width="@dimen/game_btn_size"
             android:layout_height="@dimen/game_btn_size"
             android:layout_margin="5dp"
             android:padding="@dimen/oval_btn_padding"
             android:src="@drawable/ic_close_white"
-            android:background="@drawable/bg_btn_primary_pixelart"/>
+            android:background="@drawable/bg_btn_primary_pixelart"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 

@@ -3,7 +3,6 @@ package com.bigscreen.binarygame.view.dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -18,7 +17,7 @@ public class PauseDialog extends Dialog implements View.OnClickListener {
     public static final int BUTTON_SETTING = 3;
     public static final int BUTTON_EXIT = 4;
 
-    private ImageView btnPlay, btnReplay, btnSetting, btnExit;
+    private ImageView buttonPlay, buttonReplay, buttonSetting, buttonExit;
 
     private PauseDialogListener listener;
 
@@ -35,56 +34,38 @@ public class PauseDialog extends Dialog implements View.OnClickListener {
 
         setCancelable(false);
 
-        btnPlay = (ImageView) findViewById(R.id.iv_btn_play);
-        btnReplay = (ImageView) findViewById(R.id.iv_btn_replay);
-        btnSetting = (ImageView) findViewById(R.id.iv_btn_setting);
-        btnExit = (ImageView) findViewById(R.id.iv_btn_exit);
+        buttonPlay = (ImageView) findViewById(R.id.image_btn_play);
+        buttonReplay = (ImageView) findViewById(R.id.image_btn_replay);
+        buttonSetting = (ImageView) findViewById(R.id.image_btn_setting);
+        buttonExit = (ImageView) findViewById(R.id.image_btn_exit);
 
-        btnPlay.setOnClickListener(this);
-        btnReplay.setOnClickListener(this);
-        btnSetting.setOnClickListener(this);
-        btnExit.setOnClickListener(this);
+        buttonPlay.setOnClickListener(this);
+        buttonReplay.setOnClickListener(this);
+        buttonSetting.setOnClickListener(this);
+        buttonExit.setOnClickListener(this);
     }
 
     @Override
     public void setOnDismissListener(OnDismissListener listener) {
-        Log.i(PauseDialog.class.getSimpleName(), "Dialog dismissed");
         super.setOnDismissListener(listener);
     }
-
-//    @Override
-//    public void onAttachedToWindow() {
-//        super.onAttachedToWindow();
-//        try {
-//            listener = (PauseDialogListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException("" + getContext()
-//                    + " must implement PauseDialogListener");
-//        }
-//    }
-
-//    @Override
-//    public void onDetachedFromWindow() {
-//        super.onDetachedFromWindow();
-//        listener = null;
-//    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_btn_play : {
+            case R.id.image_btn_play : {
                 listener.onPauseDialogClicked(BUTTON_PLAY);
                 break;
             }
-            case R.id.iv_btn_replay : {
+            case R.id.image_btn_replay : {
                 listener.onPauseDialogClicked(BUTTON_REPLAY);
                 break;
             }
-            case R.id.iv_btn_setting : {
+            case R.id.image_btn_setting : {
                 listener.onPauseDialogClicked(BUTTON_SETTING);
                 break;
             }
-            case R.id.iv_btn_exit : {
+            case R.id.image_btn_exit : {
                 listener.onPauseDialogClicked(BUTTON_EXIT);
                 break;
             }
@@ -93,6 +74,6 @@ public class PauseDialog extends Dialog implements View.OnClickListener {
     }
 
     public interface PauseDialogListener {
-        public void onPauseDialogClicked(int clickedButton);
+        void onPauseDialogClicked(int clickedButton);
     }
 }

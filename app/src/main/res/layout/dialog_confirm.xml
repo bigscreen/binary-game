@@ -10,13 +10,13 @@
     android:padding="3dp">
 
     <LinearLayout
-        android:id="@+id/ll_dlg_title"
+        android:id="@+id/layout_dlg_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.neopixl.pixlui.components.textview.TextView
-            android:id="@+id/tv_dlg_title"
+            android:id="@+id/text_dlg_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <com.neopixl.pixlui.components.textview.TextView
-        android:id="@+id/tv_dlg_message"
+        android:id="@+id/text_dlg_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -55,7 +55,7 @@
         android:background="@color/accent">
 
         <com.neopixl.pixlui.components.button.Button
-            android:id="@+id/btn_dlg_negative"
+            android:id="@+id/button_dlg_negative"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -68,7 +68,7 @@
             pixlui:typeface="PressStart2P.ttf"/>
 
         <com.neopixl.pixlui.components.button.Button
-            android:id="@+id/btn_dlg_positive"
+            android:id="@+id/button_dlg_positive"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

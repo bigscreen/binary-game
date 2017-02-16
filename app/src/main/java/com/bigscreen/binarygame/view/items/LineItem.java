@@ -16,10 +16,10 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
 
     public static final int RESULT_CLICK = 8;
 
-    LinearLayout llLineItem;
-    TextView tvLineResult;
+    LinearLayout layoutLineItem;
+    TextView textLineResult;
     LineEntity lineEntity;
-    Button[] btnLines = new Button[8];
+    Button[] buttonLines = new Button[8];
     int[] lines;
 
     int position;
@@ -34,25 +34,25 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
     private void inflateView(Context context) {
         inflate(context, R.layout.item_line, this);
 
-        llLineItem = (LinearLayout) findViewById(R.id.ll_line_item);
-        tvLineResult = (TextView) findViewById(R.id.tv_line_result);
-        btnLines[0] = (Button) findViewById(R.id.btn_line_0);
-        btnLines[1] = (Button) findViewById(R.id.btn_line_1);
-        btnLines[2] = (Button) findViewById(R.id.btn_line_2);
-        btnLines[3] = (Button) findViewById(R.id.btn_line_3);
-        btnLines[4] = (Button) findViewById(R.id.btn_line_4);
-        btnLines[5] = (Button) findViewById(R.id.btn_line_5);
-        btnLines[6] = (Button) findViewById(R.id.btn_line_6);
-        btnLines[7] = (Button) findViewById(R.id.btn_line_7);
+        layoutLineItem = (LinearLayout) findViewById(R.id.layout_line_item);
+        textLineResult = (TextView) findViewById(R.id.text_line_result);
+        buttonLines[0] = (Button) findViewById(R.id.button_line_0);
+        buttonLines[1] = (Button) findViewById(R.id.button_line_1);
+        buttonLines[2] = (Button) findViewById(R.id.button_line_2);
+        buttonLines[3] = (Button) findViewById(R.id.button_line_3);
+        buttonLines[4] = (Button) findViewById(R.id.button_line_4);
+        buttonLines[5] = (Button) findViewById(R.id.button_line_5);
+        buttonLines[6] = (Button) findViewById(R.id.button_line_6);
+        buttonLines[7] = (Button) findViewById(R.id.button_line_7);
 
-        tvLineResult.setOnClickListener(this);
-        for(Button btnLine : btnLines) {
+        textLineResult.setOnClickListener(this);
+        for(Button btnLine : buttonLines) {
             btnLine.setOnClickListener(this);
         }
     }
 
     public void bind(LineEntity entity, int lineHeight, int position) {
-        LayoutParams params = (LayoutParams) llLineItem.getLayoutParams();
+        LayoutParams params = (LayoutParams) layoutLineItem.getLayoutParams();
         params.height = lineHeight;
 
         this.lineEntity = entity;
@@ -60,26 +60,26 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
         this.lines = entity.getLines();
 
         for(int i=0; i<entity.getLines().length; i++) {
-            setBtnBackground(btnLines[i], lines[i]);
+            setBtnBackground(buttonLines[i], lines[i]);
         }
 
         switch (entity.getType()) {
             case LineEntity.GAME_MODE_ONE : {
-                for (Button btnLine : btnLines) {
+                for (Button btnLine : buttonLines) {
                     btnLine.setEnabled(true);
-                    tvLineResult.setEnabled(false);
-                    tvLineResult.setText("" + entity.getResult());
+                    textLineResult.setEnabled(false);
+                    textLineResult.setText("" + entity.getResult());
                 }
                 break;
             }
             case LineEntity.GAME_MODE_TWO : {
-                for (Button btnLine : btnLines) {
+                for (Button btnLine : buttonLines) {
                     btnLine.setEnabled(false);
-                    tvLineResult.setEnabled(true);
+                    textLineResult.setEnabled(true);
                     if (entity.getResult() == 0)
-                        tvLineResult.setText("");
+                        textLineResult.setText("");
                     else
-                        tvLineResult.setText("" + entity.getResult());
+                        textLineResult.setText("" + entity.getResult());
                 }
                 break;
             }
@@ -101,11 +101,11 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
     public void onClick(View v) {
         int id =  v.getId();
         int itemPosition = 8;
-        if (id == tvLineResult.getId()) {
+        if (id == textLineResult.getId()) {
             itemPosition = RESULT_CLICK;
         } else {
             int index = 0;
-            for(Button btnLine : btnLines) {
+            for(Button btnLine : buttonLines) {
                 if (id == btnLine.getId()) {
                     if (lineEntity.getLines()[index] == 0) {
                         lineEntity.getLines()[index] = 1;
@@ -140,7 +140,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
     }
 
     public TextView getTvResult() {
-        return this.tvLineResult;
+        return this.textLineResult;
     }
 
     public interface OnLineItemClickListener {

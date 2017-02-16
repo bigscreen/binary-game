@@ -1,6 +1,6 @@
 package com.bigscreen.binarygame.fragments;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -33,18 +33,18 @@ public class Keyboard extends Fragment implements View.OnClickListener {
     }
     
     private void inflateView(View view) {
-        buttons[0] = (Button) view.findViewById(R.id.btn_keyboard_0);
-        buttons[1] = (Button) view.findViewById(R.id.btn_keyboard_1);
-        buttons[2] = (Button) view.findViewById(R.id.btn_keyboard_2);
-        buttons[3] = (Button) view.findViewById(R.id.btn_keyboard_3);
-        buttons[4] = (Button) view.findViewById(R.id.btn_keyboard_4);
-        buttons[5] = (Button) view.findViewById(R.id.btn_keyboard_5);
-        buttons[6] = (Button) view.findViewById(R.id.btn_keyboard_6);
-        buttons[7] = (Button) view.findViewById(R.id.btn_keyboard_7);
-        buttons[8] = (Button) view.findViewById(R.id.btn_keyboard_8);
-        buttons[9] = (Button) view.findViewById(R.id.btn_keyboard_9);
-        buttons[10] = (Button) view.findViewById(R.id.btn_keyboard_del);
-        buttons[11] = (Button) view.findViewById(R.id.btn_keyboard_ok);
+        buttons[0] = (Button) view.findViewById(R.id.button_keyboard_0);
+        buttons[1] = (Button) view.findViewById(R.id.button_keyboard_1);
+        buttons[2] = (Button) view.findViewById(R.id.button_keyboard_2);
+        buttons[3] = (Button) view.findViewById(R.id.button_keyboard_3);
+        buttons[4] = (Button) view.findViewById(R.id.button_keyboard_4);
+        buttons[5] = (Button) view.findViewById(R.id.button_keyboard_5);
+        buttons[6] = (Button) view.findViewById(R.id.button_keyboard_6);
+        buttons[7] = (Button) view.findViewById(R.id.button_keyboard_7);
+        buttons[8] = (Button) view.findViewById(R.id.button_keyboard_8);
+        buttons[9] = (Button) view.findViewById(R.id.button_keyboard_9);
+        buttons[10] = (Button) view.findViewById(R.id.button_keyboard_del);
+        buttons[11] = (Button) view.findViewById(R.id.button_keyboard_ok);
 
         for (Button button : buttons) {
             button.setOnClickListener(this);
@@ -64,12 +64,12 @@ public class Keyboard extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
         try {
-            listener = (OnKeyboardItemClickListener) activity;
+            listener = (OnKeyboardItemClickListener) getActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
+            throw new ClassCastException(getActivity().getClass().getSimpleName()
                     + " must implement OnKeyboardItemClickListener");
         }
     }
@@ -81,6 +81,6 @@ public class Keyboard extends Fragment implements View.OnClickListener {
     }
 
     public interface OnKeyboardItemClickListener {
-        public void onKeyboardItemClick(View v, int key);
+        void onKeyboardItemClick(View v, int key);
     }
 }

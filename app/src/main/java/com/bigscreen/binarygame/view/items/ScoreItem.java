@@ -12,7 +12,7 @@ public class ScoreItem extends LinearLayout {
 
     private static final String TAG = ScoreItem.class.getSimpleName();
 
-    private TextView tvRank, tvScore, tvLevel, tvLines, tvTime;
+    private TextView textRank, textScore, textLevel, textLines, textTime;
 
     public ScoreItem(Context context) {
         super(context);
@@ -22,11 +22,11 @@ public class ScoreItem extends LinearLayout {
     private void inflateView(Context context) {
         inflate(context, R.layout.item_score, this);
 
-        tvRank = (TextView) findViewById(R.id.tv_item_rank);
-        tvScore = (TextView) findViewById(R.id.tv_item_score);
-        tvLevel = (TextView) findViewById(R.id.tv_item_level);
-        tvLines = (TextView) findViewById(R.id.tv_item_lines);
-        tvTime = (TextView) findViewById(R.id.tv_item_time);
+        textRank = (TextView) findViewById(R.id.text_item_rank);
+        textScore = (TextView) findViewById(R.id.text_item_score);
+        textLevel = (TextView) findViewById(R.id.text_item_level);
+        textLines = (TextView) findViewById(R.id.text_item_lines);
+        textTime = (TextView) findViewById(R.id.text_item_time);
     }
 
     public void bind(ScoreEntity entity, int position) {
@@ -38,10 +38,10 @@ public class ScoreItem extends LinearLayout {
             rank = "" + (position + 1);
         }
 
-        tvRank.setText("" + rank);
-        tvScore.setText("" + entity.getScore());
-        tvLevel.setText("" + entity.getLevel());
-        tvLines.setText("" + entity.getLines());
-        tvTime.setText("" + entity.getFormattedTime());
+        textRank.setText("" + rank);
+        textScore.setText("" + entity.getScore());
+        textLevel.setText("" + entity.getLevel());
+        textLines.setText("" + entity.getLines());
+        textTime.setText("" + entity.getFormattedTime());
     }
 }

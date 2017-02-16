@@ -17,9 +17,9 @@ public class BeautyDialog extends Dialog implements View.OnClickListener {
     public static final int BUTTON_POSITIVE = 1;
     public static final int BUTTON_NEGATIVE= 2;
 
-    private LinearLayout llForTitle;
-    private TextView tvTitle, tvMessage;
-    private Button positiveButton, negativeButton;
+    private LinearLayout layoutTitle;
+    private TextView textTitle, textMessage;
+    private Button buttonPositive, buttonNegative;
 
     private OnClickListener positiveButtonOnClickListener, negativeButtonOnClickListener;
 
@@ -44,27 +44,27 @@ public class BeautyDialog extends Dialog implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_confirm);
 
-        llForTitle = (LinearLayout) findViewById(R.id.ll_dlg_title);
-        tvTitle = (TextView) findViewById(R.id.tv_dlg_title);
-        tvMessage = (TextView) findViewById(R.id.tv_dlg_message);
-        positiveButton = (Button) findViewById(R.id.btn_dlg_positive);
-        negativeButton = (Button) findViewById(R.id.btn_dlg_negative);
+        layoutTitle = (LinearLayout) findViewById(R.id.layout_dlg_title);
+        textTitle = (TextView) findViewById(R.id.text_dlg_title);
+        textMessage = (TextView) findViewById(R.id.text_dlg_message);
+        buttonPositive = (Button) findViewById(R.id.button_dlg_positive);
+        buttonNegative = (Button) findViewById(R.id.button_dlg_negative);
 
-        positiveButton.setOnClickListener(this);
-        negativeButton.setOnClickListener(this);
+        buttonPositive.setOnClickListener(this);
+        buttonNegative.setOnClickListener(this);
 
         postView();
     }
 
     private void postView() {
-        tvTitle.setText(title);
-        tvMessage.setText(message);
-        positiveButton.setText(positiveButtonText);
-        negativeButton.setText(negativeButtonText);
-        llForTitle.setVisibility(titleVisibility);
-        tvMessage.setVisibility(messageVisibility);
-        positiveButton.setVisibility(positiveButtonVisibility);
-        negativeButton.setVisibility(negativeButtonVisibility);
+        textTitle.setText(title);
+        textMessage.setText(message);
+        buttonPositive.setText(positiveButtonText);
+        buttonNegative.setText(negativeButtonText);
+        layoutTitle.setVisibility(titleVisibility);
+        textMessage.setVisibility(messageVisibility);
+        buttonPositive.setVisibility(positiveButtonVisibility);
+        buttonNegative.setVisibility(negativeButtonVisibility);
     }
 
     public void setTitle(int textId) {
@@ -126,12 +126,12 @@ public class BeautyDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_dlg_positive : {
+            case R.id.button_dlg_positive : {
                 positiveButtonOnClickListener.onClick(this, BUTTON_POSITIVE);
                 dismiss();
                 break;
             }
-            case R.id.btn_dlg_negative : {
+            case R.id.button_dlg_negative : {
                 negativeButtonOnClickListener.onClick(this, BUTTON_NEGATIVE);
                 dismiss();
                 break;
@@ -141,6 +141,6 @@ public class BeautyDialog extends Dialog implements View.OnClickListener {
     }
 
     public interface OnClickListener {
-        public void onClick(Dialog dialog, int which);
+        void onClick(Dialog dialog, int which);
     }
 }
