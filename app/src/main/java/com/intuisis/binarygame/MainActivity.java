@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             int randomType = AppHelper.getRandomNumber(1, 2);
             lineEntity.setType(randomType);
             if (randomType == LineEntity.GAME_MODE_ONE) {
-                lineEntity.setResult(getRandomDecimalCustom());
+                lineEntity.setResult(getRandomDecimal());
             } else if (randomType == LineEntity.GAME_MODE_TWO) {
                 lineEntity.setResult(0);
             }
@@ -184,10 +184,6 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     private int getRandomDecimal() {
-        return decimal[AppHelper.getRandomIndex()];
-    }
-
-    private int getRandomDecimalCustom() {
         int customDecimal = 0;
         int max = 0;
         if (levelState == 1) {
@@ -230,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Jalankan game.
+     * Start the game.
      */
     private void startGame() {
         addFirstData(LineEntity.GAME_MODE_ONE);
@@ -239,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Restart dan hapus progres game sebelumnya.
+     * Restart dan remove game progress.
      */
     private void restartGame() {
         if (pauseDialog != null && pauseDialog.isShowing()) {
@@ -259,8 +255,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Setup countdown (hitung mundur) untuk penambahan data secara berkala dan otomatis.
-     * @param limit set lama countdown dijalankan.
+     * Setup countdown for automatically adding data periodically.
+     * @param limit countdown time limit in milli second.
      */
     private void initCountDown(final int limit) {
         lineCountDown = new CustomCountDownTimer(limit, 1000, true) {
@@ -283,7 +279,6 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
                     onGameOver();
                 } else {
                     addData();
-//                    cancel();
                     restart(limit);
                 }
             }
@@ -291,9 +286,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Tambah data line ke list adapter, tetapi hanya dijalankan saat line pertama dan kedua ditambahkan
-     * dalam permainan.
-     * @param gameMode set game mode 1 atau mode 2
+     * Add line data to list adapter, but it's only ran on first line and the second line to be added
+     * when the game is played.
+     * @param gameMode game mode 1 or mode 2
      */
     private void addFirstData(int gameMode) {
         LineEntity lineEntity = new LineEntity();
@@ -311,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         lineEntity.setLines(lines);
         lineEntity.setType(gameMode);
         if (gameMode == LineEntity.GAME_MODE_ONE) {
-            lineEntity.setResult(getRandomDecimalCustom());
+            lineEntity.setResult(getRandomDecimal());
         } else if (gameMode == LineEntity.GAME_MODE_TWO) {
             lineEntity.setResult(0);
         }
@@ -332,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Tambah data line ke list adapter.
+     * Add line data to list adapter.
      */
     private void addData() {
         LineEntity lineEntity = new LineEntity();
@@ -351,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         int randomType = AppHelper.getRandomNumber(1, 2);
         lineEntity.setType(randomType);
         if (randomType == LineEntity.GAME_MODE_ONE) {
-            lineEntity.setResult(getRandomDecimalCustom());
+            lineEntity.setResult(getRandomDecimal());
         } else if (randomType == LineEntity.GAME_MODE_TWO) {
             lineEntity.setResult(0);
         }
@@ -372,8 +367,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Hapus data line pada list adapter. Hapus data dijalankan apabila jawaban benar.
-     * @param position set posisi data pada list.
+     * Remove line data on list adapter. Removing data is only triggered when the answer is correct.
+     * @param position index on list.
      */
     private void removeData(final int position) {
         llCanvas.getChildAt(position).startAnimation(lineRemovedAnim);
@@ -388,8 +383,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Cek jawaban setelah satu line dikerjakan.
-     * @param position set posisi (int) data pada list.
+     * Check the answer after one line is done.
+     * @param position index on list.
      */
     private void checkAnswer(int position) {
         if (isAnswerTrue(lineAdapter.getItem(position))) {
@@ -404,9 +399,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Cek jumlah line item apakah sama dengan line result.
-     * @param lineEntity set {@link com.intuisis.binarygame.entities.LineEntity} yang akan dicek.
-     * @return true jika jumlah sama, dan false jika tidak sama.
+     * Check line item count if it is already same with result line or not.
+     * @param lineEntity {@link com.intuisis.binarygame.entities.LineEntity} which will be checked.
+     * @return true if its count is same, dan false if not.
      */
     private boolean isAnswerTrue(LineEntity lineEntity) {
         int tempCount = 0;
@@ -421,7 +416,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Perbarui skor.
+     * Update game score.
      */
     private void updateScore() {
         if (flagGameState < 2) {
@@ -444,12 +439,12 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Cek dan set level apakah naik level atau tidak.
+     * Check and update the level if it should be level up or not.
      */
     private void setLevelState() {
         if (linePerLevel > MAX_LINES_PER_LEVEL) {
             if (levelState >= MAX_LEVEL) {
-                Log.i(TAG, "Game ended!");
+                Log.i(TAG, "Game was ended!");
                 onGameOver();
             } else {
                 linePerLevel = 1;
@@ -466,7 +461,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Simpan skor yang diperoleh ke database.
+     * Save the score to database.
      */
     private void saveScore() {
         if (score == 0)
@@ -485,7 +480,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Tampilkan dialog konfirmasi saat game akan di-restart.
+     * Show confirmation dialog when game will be restarted.
      */
     private void showConfirmRestart() {
         if (confirmDialogRestart == null) {
@@ -511,8 +506,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Tampilkan dialog konfirmasi saat akan keluar dari game.
-     * @param isBackPressed set apakah dialog ditampilkan setelah tombol back ditekan atau tidak.
+     * Show exit confirmation dialog.
+     * @param isBackPressed set dialog will be shown after back key pressed or not.
      */
     private void showConfirmExit(final boolean isBackPressed) {
         BeautyDialog confirmDialogExit = new BeautyDialog(this);
@@ -538,7 +533,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Event yang terjadi saat keluar dari game.
+     * Triggered when exit the game.
      */
     private void onExitGame() {
         readyToExit = true;
@@ -551,7 +546,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Event yang terjadi saat game selesai.
+     * Triggered when the game is completed.
      */
     private void onGameOver() {
         lineCountDown.cancel();
@@ -590,7 +585,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Setup {@link android.os.PowerManager.WakeLock}. Agar layar tetap menyala.
+     * Setup {@link android.os.PowerManager.WakeLock}, it will make screen keep awake.
      */
     private void initWakeLock() {
         wakeLock = ((PowerManager) getSystemService(Context.POWER_SERVICE))
@@ -599,7 +594,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Setup fragment untuk keyboard.
+     * Setup game keyboard fragment.
      */
     private void initKeyboard() {
         Fragment content = new Keyboard();
@@ -608,7 +603,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Tampilkan keyboard beserta animasinya.
+     * Show game keyboard within its animation.
      */
     private void showKeyboard() {
         ivBtnPause.setVisibility(View.GONE);
@@ -617,7 +612,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Sembunykan keyboard beserta animasinya.
+     * Hide game keyboard within its animation.
      */
     private void hideKeyboard() {
         frameKeyboard.startAnimation(keyboardDetachedAnim);
@@ -630,7 +625,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Setup backsound untuk game.
+     * Setup game back sound.
      */
     private void initBackSound() {
         releaseMPBackSound();
@@ -639,7 +634,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Play musik pada backsound.
+     * Play game back sound music.
      */
     private void playBackSound() {
         if (!app.getSession().isMusicEnabled() || mpBackSound == null)
@@ -649,7 +644,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Pause musik pada backsound.
+     * Pause game back sound music.
      */
     private void pauseBackSound() {
         if (mpBackSound == null)
@@ -659,7 +654,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Stop musik pada backsound.
+     * Stop game back sound music.
      */
     private void stopBackSound() {
         if (mpBackSound == null)
@@ -669,7 +664,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Stop musik pada backsound, lalu me-release (menonaktifkan) {@link android.media.MediaPlayer}.
+     * Stop and release back sound music {@link android.media.MediaPlayer}.
      */
     public void stopAndReleaseBackSound() {
         if (mpBackSound != null) {
@@ -683,7 +678,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     }
 
     /**
-     * Me-release (menonaktifkan) {@link android.media.MediaPlayer} yang digunakan backsound.
+     * Release back sound music {@link android.media.MediaPlayer}.
      */
     private void releaseMPBackSound() {
         if (mpBackSound != null) {
