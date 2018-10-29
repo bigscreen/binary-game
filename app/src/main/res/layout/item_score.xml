@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
-        app:fontFamily="pixelMix"
+        app:textFont="pixelMix"
         tools:text="01" />
 
     <com.bigscreen.binarygame.custom.GameTextView
@@ -27,7 +27,7 @@
         android:layout_weight="2"
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
-        app:fontFamily="pixelMix"
+        app:textFont="pixelMix"
         tools:text="999999" />
 
     <com.bigscreen.binarygame.custom.GameTextView
@@ -38,7 +38,7 @@
         android:layout_weight="1"
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
-        app:fontFamily="pixelMix"
+        app:textFont="pixelMix"
         tools:text="10" />
 
     <com.bigscreen.binarygame.custom.GameTextView
@@ -49,7 +49,7 @@
         android:layout_weight="1"
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
-        app:fontFamily="pixelMix"
+        app:textFont="pixelMix"
         tools:text="28" />
 
     <com.bigscreen.binarygame.custom.GameTextView
@@ -60,7 +60,7 @@
         android:layout_weight="2.5"
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
-        app:fontFamily="pixelMix"
+        app:textFont="pixelMix"
         tools:text="17/03/2015, 08:00" />
 
 </LinearLayout>

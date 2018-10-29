@@ -15,7 +15,7 @@
         android:text="@string/settings_cap"
         android:textColor="@color/accent"
         android:textSize="35sp"
-        app:fontFamily="caveStory" />
+        app:textFont="caveStory" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:text="@string/music_bg"
                 android:textColor="@color/accent"
                 android:textSize="30sp"
-                app:fontFamily="caveStory" />
+                app:textFont="caveStory" />
 
         </LinearLayout>
 
@@ -75,7 +75,7 @@
                 android:text="@string/sound_fx"
                 android:textColor="@color/accent"
                 android:textSize="30sp"
-                app:fontFamily="caveStory" />
+                app:textFont="caveStory" />
 
         </LinearLayout>
 

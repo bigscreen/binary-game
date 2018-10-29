@@ -1,12 +1,10 @@
-package com.bigscreen.binarygame.view.items;
+package com.bigscreen.binarygame.score;
 
 import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bigscreen.binarygame.R;
 import com.bigscreen.binarygame.models.Score;
-
 
 public class ScoreItem extends LinearLayout {
 

@@ -18,7 +18,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_1"
@@ -32,7 +32,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_2"
@@ -46,7 +46,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_3"
@@ -60,7 +60,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_4"
@@ -74,7 +74,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_5"
@@ -88,7 +88,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_6"
@@ -102,7 +102,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameButton
         android:id="@+id/button_line_7"
@@ -116,7 +116,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameTextView
         android:layout_width="0dp"
@@ -128,7 +128,7 @@
         android:textColor="@color/accent"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:fontFamily="pixelMix" />
+        app:textFont="pixelMix" />
 
     <com.bigscreen.binarygame.custom.GameTextView
         android:id="@+id/text_line_result"
@@ -145,6 +145,6 @@
         android:textColor="@color/primary_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:fontFamily="pressStart" />
+        app:textFont="pressStart" />
 
 </LinearLayout>

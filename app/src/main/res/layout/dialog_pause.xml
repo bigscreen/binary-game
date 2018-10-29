@@ -23,7 +23,7 @@
             android:text="@string/game_paused"
             android:textColor="@color/accent"
             android:textSize="18sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <View
             android:layout_width="match_parent"

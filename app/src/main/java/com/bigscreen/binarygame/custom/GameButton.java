@@ -1,16 +1,15 @@
 package com.bigscreen.binarygame.custom;
 
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.widget.Button;
 
 import com.bigscreen.binarygame.R;
 
-public class GameButton extends Button {
+public class GameButton extends AppCompatButton {
 
     public GameButton(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -22,7 +21,7 @@ public class GameButton extends Button {
 
     private void initFont(AttributeSet attributeSet) {
         TypedArray styledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.GameTextView);
-        int fontStyle = styledAttributes.getInt(R.styleable.GameTextView_fontFamily, 0);
+        int fontStyle = styledAttributes.getInt(R.styleable.GameTextView_textFont, 0);
         setTypeface(getSelectedTypeface(fontStyle));
         styledAttributes.recycle();
     }

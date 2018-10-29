@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <declare-styleable name="GameTextView">
-        <attr name="fontFamily" format="enum" >
-            <enum name="caveStory" value="1" />
-            <enum name="pixelMix" value="2" />
-            <enum name="pressStart" value="3" />
+        <attr format="enum" name="textFont">
+            <enum name="caveStory" value="1"/>
+            <enum name="pixelMix" value="2"/>
+            <enum name="pressStart" value="3"/>
         </attr>
     </declare-styleable>
-
 </resources>

@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.bigscreen.binarygame.models.Score;
-
 import java.util.ArrayList;
 import java.util.List;
 

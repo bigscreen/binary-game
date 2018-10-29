@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.bigscreen.binarygame.score.ScoreActivity;
 import com.bigscreen.binarygame.view.dialogs.BeautyDialog;
 
 
@@ -159,7 +160,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             }
             case R.id.button_high_scores : {
                 application.playEffect(R.raw.effect_button_clicked);
-                startActivity(new Intent(this, ScoresActivity.class));
+                startActivity(new Intent(this, ScoreActivity.class));
                 break;
             }
             case R.id.button_settings : {

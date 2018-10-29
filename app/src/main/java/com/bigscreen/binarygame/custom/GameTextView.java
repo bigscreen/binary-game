@@ -4,12 +4,13 @@ package com.bigscreen.binarygame.custom;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.bigscreen.binarygame.R;
 
-public class GameTextView extends TextView {
+public class GameTextView extends AppCompatTextView {
 
     public GameTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -18,7 +19,7 @@ public class GameTextView extends TextView {
 
     private void initFont(AttributeSet attributeSet) {
         TypedArray styledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.GameTextView);
-        int fontStyle = styledAttributes.getInt(R.styleable.GameTextView_fontFamily, 0);
+        int fontStyle = styledAttributes.getInt(R.styleable.GameTextView_textFont, 0);
         setTypeface(getSelectedTypeface(fontStyle));
         styledAttributes.recycle();
     }

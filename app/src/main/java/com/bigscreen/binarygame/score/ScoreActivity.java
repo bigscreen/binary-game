@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame;
+package com.bigscreen.binarygame.score;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,15 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.bigscreen.binarygame.adapters.ScoreAdapter;
-import com.bigscreen.binarygame.models.Score;
+import com.bigscreen.binarygame.BGApplication;
+import com.bigscreen.binarygame.R;
 
+import com.bigscreen.binarygame.models.Score;
 import java.util.List;
 
 
-public class ScoresActivity extends Activity {
+public class ScoreActivity extends Activity {
 
-    private static final String TAG = ScoresActivity.class.getSimpleName();
+    private static final String TAG = ScoreActivity.class.getSimpleName();
 
     private boolean isPaused = false;
 

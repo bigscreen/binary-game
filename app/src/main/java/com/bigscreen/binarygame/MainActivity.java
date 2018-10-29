@@ -21,10 +21,10 @@ import android.widget.TextView;
 
 import com.bigscreen.binarygame.adapters.LineAdapter;
 import com.bigscreen.binarygame.models.Line;
-import com.bigscreen.binarygame.models.Score;
 import com.bigscreen.binarygame.extras.CustomCountDownTimer;
 import com.bigscreen.binarygame.fragments.Keyboard;
 import com.bigscreen.binarygame.helpers.AppHelper;
+import com.bigscreen.binarygame.models.Score;
 import com.bigscreen.binarygame.view.dialogs.BeautyDialog;
 import com.bigscreen.binarygame.view.dialogs.PauseDialog;
 import com.bigscreen.binarygame.view.items.LineItem;

@@ -30,7 +30,7 @@
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".ScoresActivity"
+            android:name=".score.ScoreActivity"
             android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation|screenSize" />
 

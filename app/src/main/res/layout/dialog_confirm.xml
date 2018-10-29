@@ -26,7 +26,7 @@
             android:text="@string/title"
             android:textColor="@color/accent"
             android:textSize="16sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <View
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
         android:text="@string/message"
         android:textColor="@color/accent"
         android:textSize="14sp"
-        app:fontFamily="pressStart" />
+        app:textFont="pressStart" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
             android:text="@string/cancel"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_dlg_positive"
@@ -79,7 +79,7 @@
             android:text="@string/ok"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
     </LinearLayout>
 

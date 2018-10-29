@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.adapters;
+package com.bigscreen.binarygame.score;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.bigscreen.binarygame.models.Score;
-import com.bigscreen.binarygame.view.items.ScoreItem;
 
 import java.util.ArrayList;
 import java.util.List;

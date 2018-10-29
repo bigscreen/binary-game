@@ -22,7 +22,7 @@
             android:text="7"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_8"
@@ -34,7 +34,7 @@
             android:text="8"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_9"
@@ -46,7 +46,7 @@
             android:text="9"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:text="4"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_5"
@@ -78,7 +78,7 @@
             android:text="5"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_6"
@@ -90,7 +90,7 @@
             android:text="6"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
     </LinearLayout>
 
@@ -110,7 +110,7 @@
             android:text="1"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_2"
@@ -122,7 +122,7 @@
             android:text="2"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_3"
@@ -134,7 +134,7 @@
             android:text="3"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
     </LinearLayout>
 
@@ -154,7 +154,7 @@
             android:text="DEL"
             android:textColor="@color/white"
             android:textSize="10sp"
-            app:fontFamily="pressStart"
+            app:textFont="pressStart"
             tools:ignore="SmallSp" />
 
         <com.bigscreen.binarygame.custom.GameButton
@@ -167,7 +167,7 @@
             android:text="0"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:fontFamily="pressStart" />
+            app:textFont="pressStart" />
 
         <com.bigscreen.binarygame.custom.GameButton
             android:id="@+id/button_keyboard_ok"
@@ -179,7 +179,7 @@
             android:text="OK"
             android:textColor="@color/white"
             android:textSize="10sp"
-            app:fontFamily="pressStart"
+            app:textFont="pressStart"
             tools:ignore="SmallSp" />
 
     </LinearLayout>
