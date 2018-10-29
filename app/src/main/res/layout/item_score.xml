@@ -8,7 +8,7 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:id="@+id/text_item_rank"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:textFont="pixelMix"
         tools:text="01" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:id="@+id/text_item_score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         app:textFont="pixelMix"
         tools:text="999999" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:id="@+id/text_item_level"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:textFont="pixelMix"
         tools:text="10" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:id="@+id/text_item_lines"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         app:textFont="pixelMix"
         tools:text="28" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:id="@+id/text_item_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

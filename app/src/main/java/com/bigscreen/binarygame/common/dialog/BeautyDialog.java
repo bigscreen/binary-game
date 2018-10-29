@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.view.dialogs;
+package com.bigscreen.binarygame.common.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

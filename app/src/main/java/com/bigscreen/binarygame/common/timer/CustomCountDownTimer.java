@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.extras;
+package com.bigscreen.binarygame.common.timer;
 
 import android.os.Handler;
 import android.os.Message;

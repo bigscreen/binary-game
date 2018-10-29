@@ -6,7 +6,7 @@
     android:background="@color/primary_dark"
     android:orientation="horizontal">
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -19,7 +19,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -32,7 +32,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -45,7 +45,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -58,7 +58,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -71,7 +71,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -84,7 +84,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"
@@ -97,7 +97,7 @@
         android:textStyle="bold"
         app:textFont="pixelMix" />
 
-    <com.bigscreen.binarygame.custom.GameTextView
+    <com.bigscreen.binarygame.common.GameTextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/line_padding"

@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame;
+package com.bigscreen.binarygame.setting;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import com.bigscreen.binarygame.BGApplication;
+import com.bigscreen.binarygame.R;
 
 
-public class SettingsActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class SettingActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private static final String TAG = SettingsActivity.class.getSimpleName();
+    private static final String TAG = SettingActivity.class.getSimpleName();
 
     private boolean isPaused = false;
 

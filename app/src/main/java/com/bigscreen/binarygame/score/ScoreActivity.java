@@ -10,7 +10,6 @@ import android.widget.ListView;
 import com.bigscreen.binarygame.BGApplication;
 import com.bigscreen.binarygame.R;
 
-import com.bigscreen.binarygame.models.Score;
 import java.util.List;
 
 

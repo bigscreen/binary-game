@@ -8,8 +8,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.Display;
 
-import com.bigscreen.binarygame.helpers.DBHelper;
-import com.bigscreen.binarygame.helpers.SessionManager;
+import com.bigscreen.binarygame.common.helper.DBHelper;
+import com.bigscreen.binarygame.common.helper.SessionManager;
 
 
 public class BGApplication extends Application {
@@ -44,7 +44,7 @@ public class BGApplication extends Application {
     /**
      * Get session manager of application.
      * Session manager is class to manage data on {@link android.content.SharedPreferences}.
-     * @return {@link com.bigscreen.binarygame.helpers.SessionManager}
+     * @return {@link SessionManager}
      */
     public SessionManager getSession() {
         if (sessionManager == null)
@@ -55,7 +55,7 @@ public class BGApplication extends Application {
 
     /**
      * Get database helper of application.
-     * @return {@link com.bigscreen.binarygame.helpers.DBHelper}
+     * @return {@link DBHelper}
      */
     public DBHelper getDatabase() {
         if (dbHelper == null)

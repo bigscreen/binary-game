@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame;
+package com.bigscreen.binarygame.menu;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,8 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.bigscreen.binarygame.BGApplication;
+import com.bigscreen.binarygame.MainActivity;
+import com.bigscreen.binarygame.R;
+import com.bigscreen.binarygame.setting.SettingActivity;
 import com.bigscreen.binarygame.score.ScoreActivity;
-import com.bigscreen.binarygame.view.dialogs.BeautyDialog;
+import com.bigscreen.binarygame.common.dialog.BeautyDialog;
 
 
 public class MenuActivity extends Activity implements View.OnClickListener {
@@ -165,7 +169,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             }
             case R.id.button_settings : {
                 application.playEffect(R.raw.effect_button_clicked);
-                startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
             }
             case R.id.button_about : {

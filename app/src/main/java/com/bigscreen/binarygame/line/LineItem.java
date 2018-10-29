@@ -1,4 +1,7 @@
-package com.bigscreen.binarygame.view.items;
+package com.bigscreen.binarygame.line;
+
+import static com.bigscreen.binarygame.line.LineKt.GAME_MODE_ONE;
+import static com.bigscreen.binarygame.line.LineKt.GAME_MODE_TWO;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +9,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bigscreen.binarygame.models.Line;
 import com.bigscreen.binarygame.R;
 
 
@@ -64,7 +66,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
         }
 
         switch (entity.getType()) {
-            case Line.GAME_MODE_ONE : {
+            case GAME_MODE_ONE : {
                 for (Button btnLine : buttonLines) {
                     btnLine.setEnabled(true);
                     textLineResult.setEnabled(false);
@@ -72,7 +74,7 @@ public class LineItem extends LinearLayout implements View.OnClickListener {
                 }
                 break;
             }
-            case Line.GAME_MODE_TWO : {
+            case GAME_MODE_TWO : {
                 for (Button btnLine : buttonLines) {
                     btnLine.setEnabled(false);
                     textLineResult.setEnabled(true);

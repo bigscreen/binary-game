@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.helpers;
+package com.bigscreen.binarygame.common.helper;
 
 import java.util.ArrayList;
 import java.util.List;

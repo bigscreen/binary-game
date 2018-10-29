@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.extras;
+package com.bigscreen.binarygame.common.timer;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -22,7 +22,7 @@ public abstract class Timer {
 
 	/**
 	 * Default constructor which sets the interval to 1000 ms (1s) and the
-	 * duration to {@link com.intuisis.binarygame.extras.Timer#DURATION_INFINITY}
+	 * duration to {@link com.bigscreen.binarygame.common.timer.Timer#DURATION_INFINITY}
 	 */
 	public Timer() {
 		this(1000, -1);

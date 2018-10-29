@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.helpers;
+package com.bigscreen.binarygame.common.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.bigscreen.binarygame.models.Score;
+import com.bigscreen.binarygame.score.Score;
 import java.util.ArrayList;
 import java.util.List;
 

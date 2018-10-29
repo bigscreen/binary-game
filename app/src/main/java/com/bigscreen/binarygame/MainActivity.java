@@ -1,5 +1,8 @@
 package com.bigscreen.binarygame;
 
+import static com.bigscreen.binarygame.line.LineKt.GAME_MODE_ONE;
+import static com.bigscreen.binarygame.line.LineKt.GAME_MODE_TWO;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,15 +22,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bigscreen.binarygame.adapters.LineAdapter;
-import com.bigscreen.binarygame.models.Line;
-import com.bigscreen.binarygame.extras.CustomCountDownTimer;
-import com.bigscreen.binarygame.fragments.Keyboard;
-import com.bigscreen.binarygame.helpers.AppHelper;
-import com.bigscreen.binarygame.models.Score;
-import com.bigscreen.binarygame.view.dialogs.BeautyDialog;
-import com.bigscreen.binarygame.view.dialogs.PauseDialog;
-import com.bigscreen.binarygame.view.items.LineItem;
+import com.bigscreen.binarygame.line.Line;
+import com.bigscreen.binarygame.line.LineAdapter;
+import com.bigscreen.binarygame.common.timer.CustomCountDownTimer;
+import com.bigscreen.binarygame.common.Keyboard;
+import com.bigscreen.binarygame.common.helper.AppHelper;
+import com.bigscreen.binarygame.score.Score;
+import com.bigscreen.binarygame.setting.SettingActivity;
+import com.bigscreen.binarygame.common.dialog.BeautyDialog;
+import com.bigscreen.binarygame.common.dialog.PauseDialog;
+import com.bigscreen.binarygame.line.LineItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -172,9 +176,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             line.setLines(lines);
             int randomType = AppHelper.getRandomNumber(1, 2);
             line.setType(randomType);
-            if (randomType == Line.GAME_MODE_ONE) {
+            if (randomType == GAME_MODE_ONE) {
                 line.setResult(getRandomDecimal());
-            } else if (randomType == Line.GAME_MODE_TWO) {
+            } else if (randomType == GAME_MODE_TWO) {
                 line.setResult(0);
             }
             lineEntities.add(line);
@@ -229,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Start the game.
      */
     private void startGame() {
-        addFirstData(Line.GAME_MODE_ONE);
+        addFirstData(GAME_MODE_ONE);
         timeLimit = timePerLevel[0];
         initCountDown(timeLimit);
     }
@@ -304,9 +308,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         Log.i(TAG, "add line=" + Arrays.toString(lines));
         line.setLines(lines);
         line.setType(gameMode);
-        if (gameMode == Line.GAME_MODE_ONE) {
+        if (gameMode == GAME_MODE_ONE) {
             line.setResult(getRandomDecimal());
-        } else if (gameMode == Line.GAME_MODE_TWO) {
+        } else if (gameMode == GAME_MODE_TWO) {
             line.setResult(0);
         }
 
@@ -318,9 +322,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             flagGameState++;
         } else {
             if (flagGameState == 0) {
-                addFirstData(Line.GAME_MODE_ONE);
+                addFirstData(GAME_MODE_ONE);
             } else {
-                addFirstData(Line.GAME_MODE_TWO);
+                addFirstData(GAME_MODE_TWO);
             }
         }
     }
@@ -344,9 +348,9 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         line.setLines(lines);
         int randomType = AppHelper.getRandomNumber(1, 2);
         line.setType(randomType);
-        if (randomType == Line.GAME_MODE_ONE) {
+        if (randomType == GAME_MODE_ONE) {
             line.setResult(getRandomDecimal());
-        } else if (randomType == Line.GAME_MODE_TWO) {
+        } else if (randomType == GAME_MODE_TWO) {
             line.setResult(0);
         }
 
@@ -399,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     /**
      * Check line item count if it is already same with result line or not.
-     * @param line {@link com.bigscreen.binarygame.models.Line} which will be checked.
+     * @param line {@link Line} which will be checked.
      * @return true if its count is same, dan false if not.
      */
     private boolean isAnswerTrue(Line line) {
@@ -419,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      */
     private void updateScore() {
         if (flagGameState < 2) {
-            addFirstData(Line.GAME_MODE_TWO);
+            addFirstData(GAME_MODE_TWO);
         } else if (flagGameState == 2) {
             addData();
             lineCountDown.start();
@@ -774,7 +778,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
                 break;
             }
             case PauseDialog.BUTTON_SETTING : {
-                startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
             }
             case PauseDialog.BUTTON_EXIT : {

@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.models
+package com.bigscreen.binarygame.score
 
 import android.text.format.DateFormat
 import java.util.Date
