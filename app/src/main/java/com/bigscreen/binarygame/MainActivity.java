@@ -456,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
                 timeLimit = timePerLevel[levelState - 1];
                 initCountDown(timeLimit);
                 lineCountDown.start();
-                textLevel.setText(getTextFromNumber(lineState));
+                textLevel.setText(getTextFromNumber(levelState));
                 Log.i(TAG, "Lines left per level = " + MAX_LINES_PER_LEVEL);
             }
         }
