@@ -10,7 +10,10 @@ import android.widget.ListView;
 import com.bigscreen.binarygame.BGApplication;
 import com.bigscreen.binarygame.R;
 
+import com.bigscreen.binarygame.misc.SoundService;
+import com.bigscreen.binarygame.storage.DBHelper;
 import java.util.List;
+import javax.inject.Inject;
 
 
 public class ScoreActivity extends Activity {
@@ -19,23 +22,26 @@ public class ScoreActivity extends Activity {
 
     private boolean isPaused = false;
 
-    private BGApplication app;
     private ListView listScores;
     private Button buttonShareScore;
     private ScoreAdapter scoreAdapter;
     private List<Score> scoreEntities;
 
+    @Inject
+    public DBHelper dbHelper;
+    @Inject
+    public SoundService soundService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((BGApplication) getApplication()).getAppComponent().inject(this);
         setContentView(R.layout.activity_scores);
-
-        app = (BGApplication) getApplication();
 
         listScores = (ListView) findViewById(R.id.list_scores);
         buttonShareScore = (Button) findViewById(R.id.button_share_score);
         scoreAdapter = new ScoreAdapter(this);
-        scoreEntities = app.getDatabase().getScores();
+        scoreEntities = dbHelper.getScores();
 
         listScores.setAdapter(scoreAdapter);
         scoreAdapter.setData(scoreEntities);
@@ -43,7 +49,7 @@ public class ScoreActivity extends Activity {
         buttonShareScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                app.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 long score = scoreEntities.get(0).getScore();
                 long level = scoreEntities.get(0).getLevel();
                 String shareText = String.format(getString(R.string.share_score), score, level);
@@ -51,7 +57,7 @@ public class ScoreActivity extends Activity {
             }
         });
 
-        app.playBackSound();
+        soundService.playBackSound();
     }
 
     @Override
@@ -63,7 +69,7 @@ public class ScoreActivity extends Activity {
     protected void onResume() {
         super.onResume();
         if (isPaused) {
-            app.playBackSound();
+            soundService.playBackSound();
             isPaused = false;
         }
     }
@@ -71,7 +77,7 @@ public class ScoreActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        app.pauseBackSound();
+        soundService.pauseBackSound();
         isPaused = true;
     }
 
@@ -82,7 +88,7 @@ public class ScoreActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        app.playEffect(R.raw.effect_back);
+        soundService.playEffect(R.raw.effect_back);
         super.onBackPressed();
     }
 

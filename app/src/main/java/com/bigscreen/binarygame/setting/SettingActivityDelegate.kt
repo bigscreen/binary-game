@@ -1,0 +1,3 @@
+package com.bigscreen.binarygame.setting
+
+class SettingActivityDelegate

@@ -17,7 +17,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.bigscreen.binarygame.common.GameTextView
+        <com.bigscreen.binarygame.common.component.GameTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/game_paused"

@@ -12,9 +12,12 @@ import android.widget.Button;
 import com.bigscreen.binarygame.BGApplication;
 import com.bigscreen.binarygame.MainActivity;
 import com.bigscreen.binarygame.R;
+import com.bigscreen.binarygame.misc.SoundService;
+import com.bigscreen.binarygame.common.extension.ActivityKt;
 import com.bigscreen.binarygame.setting.SettingActivity;
 import com.bigscreen.binarygame.score.ScoreActivity;
 import com.bigscreen.binarygame.common.dialog.BeautyDialog;
+import javax.inject.Inject;
 
 
 public class MenuActivity extends Activity implements View.OnClickListener {
@@ -23,16 +26,18 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
     private boolean isPaused = false;
 
-    private BGApplication application;
     private Button buttonStart, buttonHighScores, buttonSettings, buttonAbout;
     private boolean justShared = false;
+
+    @Inject
+    public SoundService soundService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((BGApplication) getApplication()).getAppComponent().inject(this);
         setContentView(R.layout.activity_menu);
 
-        application = (BGApplication) getApplication();
 
         buttonStart = (Button) findViewById(R.id.button_start);
         buttonHighScores = (Button) findViewById(R.id.button_high_scores);
@@ -44,10 +49,10 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         buttonSettings.setOnClickListener(this);
         buttonAbout.setOnClickListener(this);
 
-        application.initBackSound(R.raw.backsound);
-        application.playBackSound();
+        soundService.initBackSound(R.raw.backsound);
+        soundService.playBackSound();
 
-        checkDeviceScreen(application.getScreenSize(this)[0], application.getScreenSize(this)[1]);
+        checkDeviceScreen();
     }
 
     @Override
@@ -59,7 +64,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         if (isPaused) {
-            application.playBackSound();
+            soundService.playBackSound();
             isPaused = false;
         }
     }
@@ -67,17 +72,19 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onPause() {
         super.onPause();
-        application.pauseBackSound();
+        soundService.pauseBackSound();
         isPaused = true;
     }
 
     @Override
     protected void onDestroy() {
-        application.stopAndReleaseBackSound();
+        soundService.stopAndReleaseBackSound();
         super.onDestroy();
     }
 
-    private void checkDeviceScreen(int width, int height) {
+    private void checkDeviceScreen() {
+        final int width = ActivityKt.getScreenWidth(this);
+        final int height = ActivityKt.getScreenHeight(this);
         if (width < 300 || height < 450) {
             BeautyDialog warningDialog = new BeautyDialog(this);
             warningDialog.setCancelable(false);
@@ -114,7 +121,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         confirmExitDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                application.playEffect(R.raw.effect_back);
+                soundService.playEffect(R.raw.effect_back);
             }
         });
         confirmExitDialog.show();
@@ -129,7 +136,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             @Override
             public void onClick(Dialog dialog, int which) {
                 justShared = true;
-                application.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 share();
             }
         });
@@ -137,7 +144,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 if (!justShared)
-                    application.playEffect(R.raw.effect_back);
+                    soundService.playEffect(R.raw.effect_back);
                 justShared = false;
             }
         });
@@ -158,22 +165,22 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_start : {
-                application.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             }
             case R.id.button_high_scores : {
-                application.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 startActivity(new Intent(this, ScoreActivity.class));
                 break;
             }
             case R.id.button_settings : {
-                application.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 startActivity(new Intent(this, SettingActivity.class));
                 break;
             }
             case R.id.button_about : {
-                application.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 showAbout();
                 break;
             }
@@ -182,7 +189,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
         showExitConfirmation();
     }
 }

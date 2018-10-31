@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.bigscreen.binarygame.common.GameButton
+            <com.bigscreen.binarygame.common.component.GameButton
                 android:id="@+id/button_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 android:textSize="32sp"
                 app:textFont="caveStory" />
 
-            <com.bigscreen.binarygame.common.GameButton
+            <com.bigscreen.binarygame.common.component.GameButton
                 android:id="@+id/button_high_scores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.bigscreen.binarygame.common.GameButton
+            <com.bigscreen.binarygame.common.component.GameButton
                 android:id="@+id/button_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 android:textSize="32sp"
                 app:textFont="caveStory" />
 
-            <com.bigscreen.binarygame.common.GameButton
+            <com.bigscreen.binarygame.common.component.GameButton
                 android:id="@+id/button_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

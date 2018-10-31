@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.common.helper;
+package com.bigscreen.binarygame.storage;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,7 @@ import com.bigscreen.binarygame.score.Score;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Deprecated
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = DBHelper.class.getSimpleName();

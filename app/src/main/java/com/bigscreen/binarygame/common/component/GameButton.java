@@ -1,20 +1,22 @@
-package com.bigscreen.binarygame.common;
-
+package com.bigscreen.binarygame.common.component;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.support.v7.widget.AppCompatTextView;
+import android.os.Build;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.bigscreen.binarygame.R;
 
-public class GameTextView extends AppCompatTextView {
+public class GameButton extends AppCompatButton {
 
-    public GameTextView(Context context, AttributeSet attrs) {
+    public GameButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         initFont(attrs);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setStateListAnimator(null);
+        }
     }
 
     private void initFont(AttributeSet attributeSet) {

@@ -6,7 +6,7 @@
     android:background="@drawable/bg_background_other"
     android:padding="@dimen/basic_margin">
 
-    <com.bigscreen.binarygame.common.GameTextView
+    <com.bigscreen.binarygame.common.component.GameTextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 android:background="@drawable/bg_checkbox"
                 android:button="@null" />
 
-            <com.bigscreen.binarygame.common.GameTextView
+            <com.bigscreen.binarygame.common.component.GameTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -67,7 +67,7 @@
                 android:background="@drawable/bg_checkbox"
                 android:button="@null" />
 
-            <com.bigscreen.binarygame.common.GameTextView
+            <com.bigscreen.binarygame.common.component.GameTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"

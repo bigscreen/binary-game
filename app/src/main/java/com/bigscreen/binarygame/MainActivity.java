@@ -22,10 +22,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bigscreen.binarygame.storage.BGPreferences;
+import com.bigscreen.binarygame.misc.SoundService;
+import com.bigscreen.binarygame.common.extension.ActivityKt;
+import com.bigscreen.binarygame.storage.DBHelper;
 import com.bigscreen.binarygame.line.Line;
 import com.bigscreen.binarygame.line.LineAdapter;
 import com.bigscreen.binarygame.common.timer.CustomCountDownTimer;
-import com.bigscreen.binarygame.common.Keyboard;
+import com.bigscreen.binarygame.common.component.Keyboard;
 import com.bigscreen.binarygame.common.helper.AppHelper;
 import com.bigscreen.binarygame.score.Score;
 import com.bigscreen.binarygame.setting.SettingActivity;
@@ -37,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import javax.inject.Inject;
 
 
 public class MainActivity extends AppCompatActivity implements LineItem.OnLineItemClickListener,
@@ -48,10 +53,6 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     private static final int MAX_LINES = 7;
     private static final int MAX_LINES_PER_LEVEL = 15;
     private static final int MAX_LEVEL = 10;
-
-    private BGApplication application;
-
-    private int canvasHeight, lineHeight, decimalHintHeight, canvasMargin;
 
     private int[] decimal = {128, 64, 32, 16, 8, 4, 2, 1};
     private int[] timePerLevel = {12000, 11000, 10000, 9000, 8000, 7000, 6000, 5000, 4000, 3000};
@@ -75,17 +76,24 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
     private PowerManager.WakeLock wakeLockManager;
     private MediaPlayer mpBackSound;
 
+    @Inject
+    public DBHelper dbHelper;
+    @Inject
+    public BGPreferences preferences;
+    @Inject
+    public SoundService soundService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((BGApplication) getApplication()).getAppComponent().inject(this);
+
         setContentView(R.layout.activity_main);
 
-        application = (BGApplication) getApplication();
-
-        decimalHintHeight = getResources().getDimensionPixelSize(R.dimen.decimal_hint_height);
-        canvasMargin = getResources().getDimensionPixelSize(R.dimen.game_canvas_horizontal_margin);
-        canvasHeight = application.getScreenSize(this)[1] - ((2 * decimalHintHeight));
-        lineHeight = canvasHeight / MAX_LINES;
+        int decimalHintHeight = getResources().getDimensionPixelSize(R.dimen.decimal_hint_height);
+        int canvasMargin = getResources().getDimensionPixelSize(R.dimen.game_canvas_horizontal_margin);
+        int canvasHeight = ActivityKt.getScreenHeight(this) - ((2 * decimalHintHeight));
+        int lineHeight = canvasHeight / MAX_LINES;
 
         lineAddedAnim = AnimationUtils.loadAnimation(this, R.anim.line_added);
         lineRemovedAnim = AnimationUtils.loadAnimation(this, R.anim.line_removed);
@@ -103,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         pauseDialog = new PauseDialog(this, this);
 
         lineAdapter.setData(new ArrayList<Line>());
-        highestScore = application.getDatabase().getHighestScore().getScore();
+        highestScore = dbHelper.getHighestScore().getScore();
 
         imageBtnPause.setOnClickListener(this);
         pauseDialog.setOnShowListener(onShowListener);
@@ -317,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         if (!isAnswerTrue(line)) {
             lineAdapter.appendSingleData(line);
             layoutCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
-            application.playEffect(R.raw.effect_line_added);
+            soundService.playEffect(R.raw.effect_line_added);
             linesLength++;
             flagGameState++;
         } else {
@@ -357,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         if (!isAnswerTrue(line)) {
             lineAdapter.appendSingleData(line);
             layoutCanvas.getChildAt(lineAdapter.getCount() - 1).startAnimation(lineAddedAnim);
-            application.playEffect(R.raw.effect_line_added);
+            soundService.playEffect(R.raw.effect_line_added);
             linesLength++;
             flagGameState++;
             if (frameKeyboard.getVisibility() == View.VISIBLE) {
@@ -375,7 +383,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      */
     private void removeData(final int position) {
         layoutCanvas.getChildAt(position).startAnimation(lineRemovedAnim);
-        application.playEffect(R.raw.effect_line_removed);
+        soundService.playEffect(R.raw.effect_line_removed);
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 lineAdapter.removeData(position);
@@ -476,7 +484,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         score.setLines(lineState);
         score.setTime(System.currentTimeMillis() / 1000);
 
-        if (application.getDatabase().insertScore(score))
+        if (dbHelper.insertScore(score))
             Log.i(TAG, "Game score saved!");
         else
             Log.e(TAG, "Game score could not saved!");
@@ -493,14 +501,14 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             confirmDialogRestart.setPositiveButton(new BeautyDialog.OnClickListener() {
                 @Override
                 public void onClick(Dialog dialog, int which) {
-                    application.playEffect(R.raw.effect_button_clicked);
+                    soundService.playEffect(R.raw.effect_button_clicked);
                     restartGame();
                 }
             });
             confirmDialogRestart.setNegativeButton(new BeautyDialog.OnClickListener() {
                 @Override
                 public void onClick(Dialog dialog, int which) {
-                    application.playEffect(R.raw.effect_back);
+                    soundService.playEffect(R.raw.effect_back);
                     dialog.dismiss();
                 }
             });
@@ -525,7 +533,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         confirmDialogExit.setNegativeButton(new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
-                application.playEffect(R.raw.effect_back);
+                soundService.playEffect(R.raw.effect_back);
                 dialog.cancel();
             }
         });
@@ -544,7 +552,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             pauseDialog.dismiss();
         }
         saveScore();
-        application.playEffect(R.raw.effect_back);
+        soundService.playEffect(R.raw.effect_back);
         finish();
     }
 
@@ -562,7 +570,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
             goMessage = getString(R.string.score) + ":\n" + score;
         }
 
-        application.playEffect(R.raw.effect_game_over);
+        soundService.playEffect(R.raw.effect_game_over);
 
         BeautyDialog gameOverDialog;
         gameOverDialog = new BeautyDialog(this);
@@ -572,14 +580,14 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
         gameOverDialog.setPositiveButton(R.string.play_again, new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
-                application.playEffect(R.raw.effect_button_clicked);
+                soundService.playEffect(R.raw.effect_button_clicked);
                 restartGame();
             }
         });
         gameOverDialog.setNegativeButton(R.string.exit, new BeautyDialog.OnClickListener() {
             @Override
             public void onClick(Dialog dialog, int which) {
-                application.playEffect(R.raw.effect_back);
+                soundService.playEffect(R.raw.effect_back);
                 readyToExit = true;
                 finish();
             }
@@ -591,8 +599,8 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Setup {@link android.os.PowerManager.WakeLock}, it will make screen keep awake.
      */
     private void initWakeLock() {
-        wakeLockManager = ((PowerManager) getSystemService(Context.POWER_SERVICE))
-                .newWakeLock(PowerManager.FULL_WAKE_LOCK, TAG);
+        final PowerManager pm = ((PowerManager) getSystemService(Context.POWER_SERVICE));
+        wakeLockManager = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, TAG);
         wakeLockManager.acquire();
     }
 
@@ -640,7 +648,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
      * Play game back sound music.
      */
     private void playBackSound() {
-        if (!application.getSession().isMusicEnabled() || mpBackSound == null)
+        if (!preferences.isMusicEnabled() || mpBackSound == null)
             return;
         if (!mpBackSound.isPlaying())
             mpBackSound.start();
@@ -707,7 +715,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onLineItemClick(View v, int parentPosition, int itemPosition, Line line) {
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
         selectedPosition = parentPosition;
         selectedLine = line;
         if (itemPosition == LineItem.RESULT_CLICK) {
@@ -723,7 +731,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onKeyboardItemClick(View v, int key) {
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
         CharSequence strTemp = selectedTextView.getText().toString();
         if (key == Keyboard.KEY_DELETE) {
             CharSequence strDeleted = "";
@@ -754,7 +762,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onClick(View v) {
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
         switch (v.getId()) {
             case R.id.image_btn_pause : {
                 onPause();
@@ -766,7 +774,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onPauseDialogClicked(int clickedButton) {
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
         switch (clickedButton) {
             case PauseDialog.BUTTON_PLAY : {
                 pauseDialog.dismiss();
@@ -791,7 +799,7 @@ public class MainActivity extends AppCompatActivity implements LineItem.OnLineIt
 
     @Override
     public void onBackPressed() {
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
         showConfirmExit(true);
         lineCountDown.pause();
         isDialogShowed = true;

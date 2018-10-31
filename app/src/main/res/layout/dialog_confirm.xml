@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.bigscreen.binarygame.common.GameTextView
+        <com.bigscreen.binarygame.common.component.GameTextView
             android:id="@+id/text_dlg_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
 
     </LinearLayout>
 
-    <com.bigscreen.binarygame.common.GameTextView
+    <com.bigscreen.binarygame.common.component.GameTextView
         android:id="@+id/text_dlg_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         android:orientation="horizontal"
         android:paddingTop="2dp">
 
-        <com.bigscreen.binarygame.common.GameButton
+        <com.bigscreen.binarygame.common.component.GameButton
             android:id="@+id/button_dlg_negative"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -66,7 +66,7 @@
             android:textSize="12sp"
             app:textFont="pressStart" />
 
-        <com.bigscreen.binarygame.common.GameButton
+        <com.bigscreen.binarygame.common.component.GameButton
             android:id="@+id/button_dlg_positive"
             android:layout_width="0dp"
             android:layout_height="match_parent"

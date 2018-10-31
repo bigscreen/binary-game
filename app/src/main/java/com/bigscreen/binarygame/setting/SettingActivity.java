@@ -8,6 +8,9 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import com.bigscreen.binarygame.BGApplication;
 import com.bigscreen.binarygame.R;
+import com.bigscreen.binarygame.storage.BGPreferences;
+import com.bigscreen.binarygame.misc.SoundService;
+import javax.inject.Inject;
 
 
 public class SettingActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -16,16 +19,19 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
 
     private boolean isPaused = false;
 
-    private BGApplication application;
     private LinearLayout layoutMusicBg, layoutSoundFx;
     private CheckBox checkboxMusicBg, checkboxSoundFx;
+
+    @Inject
+    public BGPreferences preferences;
+    @Inject
+    public SoundService soundService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((BGApplication) getApplication()).getAppComponent().inject(this);
         setContentView(R.layout.activity_settings);
-
-        application = (BGApplication) getApplication();
 
         layoutMusicBg = (LinearLayout) findViewById(R.id.layout_music_bg);
         layoutSoundFx = (LinearLayout) findViewById(R.id.layout_sound_fx);
@@ -37,10 +43,10 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
         checkboxMusicBg.setOnCheckedChangeListener(this);
         checkboxSoundFx.setOnCheckedChangeListener(this);
 
-        checkboxMusicBg.setChecked(application.getSession().isMusicEnabled());
-        checkboxSoundFx.setChecked(application.getSession().isSoundFxEnabled());
+        checkboxMusicBg.setChecked(preferences.isMusicEnabled());
+        checkboxSoundFx.setChecked(preferences.isSoundFxEnabled());
 
-        application.playBackSound();
+        soundService.playBackSound();
     }
 
     @Override
@@ -52,7 +58,7 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
     protected void onResume() {
         super.onResume();
         if (isPaused) {
-            application.playBackSound();
+            soundService.playBackSound();
             isPaused = false;
         }
     }
@@ -60,7 +66,7 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
     @Override
     protected void onPause() {
         super.onPause();
-        application.pauseBackSound();
+        soundService.pauseBackSound();
         isPaused = true;
     }
 
@@ -90,7 +96,7 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
             }
             default: break;
         }
-        application.playEffect(R.raw.effect_button_clicked);
+        soundService.playEffect(R.raw.effect_button_clicked);
     }
 
     @Override
@@ -98,16 +104,16 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
         switch (buttonView.getId()) {
             case R.id.checkbox_music_bg : {
                 if (isChecked) {
-                    application.getSession().setMusicEnabled(true);
-                    application.playBackSound();
+                    preferences.setMusicEnabled(true);
+                    soundService.playBackSound();
                 } else {
-                    application.pauseBackSound();
-                    application.getSession().setMusicEnabled(true);
+                    soundService.pauseBackSound();
+                    preferences.setMusicEnabled(true);
                 }
                 break;
             }
             case R.id.checkbox_sound_fx : {
-                application.getSession().setSoundFxEnabled(isChecked);
+                preferences.setSoundFxEnabled(isChecked);
                 break;
             }
             default: break;
@@ -116,7 +122,7 @@ public class SettingActivity extends Activity implements View.OnClickListener, C
 
     @Override
     public void onBackPressed() {
-        application.playEffect(R.raw.effect_back);
+        soundService.playEffect(R.raw.effect_back);
         super.onBackPressed();
     }
 }

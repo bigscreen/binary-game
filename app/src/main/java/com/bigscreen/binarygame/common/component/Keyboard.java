@@ -1,4 +1,4 @@
-package com.bigscreen.binarygame.common;
+package com.bigscreen.binarygame.common.component;
 
 import android.content.Context;
 import android.os.Bundle;
